@@ -1,0 +1,4 @@
+*.sh
+*.exe
+testUtil.h
+stackLibTestRunner.c

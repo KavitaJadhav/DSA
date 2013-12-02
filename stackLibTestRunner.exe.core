@@ -1,0 +1,12 @@
+[main] stackLibTestRunner 1000 (0) exception: trapped!
+[main] stackLibTestRunner 1000 (0) exception: code 0xC0000005 at 0x6F
+[main] stackLibTestRunner 1000 (0) exception: ax 0xA031F10 bx 0x244FDD0 cx 0x3B dx 0x61061340
+[main] stackLibTestRunner 1000 (0) exception: si 0x0 di 0x0 bp 0x6C6C6568 sp 0x244FDB4
+[main] stackLibTestRunner 1000 (0) exception: exception is: STATUS_ACCESS_VIOLATION
+[main] stackLibTestRunner 1000 (0) stack: Stack trace:
+[main] stackLibTestRunner 1000 (0) stack: frame 0: sp = 0x244F954, pc = 0x6100A2C3
+[main] stackLibTestRunner 1000 (0) stack: frame 1: sp = 0x244F990, pc = 0x7748B499
+[main] stackLibTestRunner 1000 (0) stack: frame 2: sp = 0x244F9B4, pc = 0x7748B46B
+[main] stackLibTestRunner 1000 (0) stack: frame 3: sp = 0x244FA64, pc = 0x77440133
+[main] stackLibTestRunner 1000 (0) handle_exceptions: Exception: STATUS_ACCESS_VIOLATION
+[main] stackLibTestRunner 1000 (0) handle_exceptions: Error while dumping state (probably corrupted stack)
