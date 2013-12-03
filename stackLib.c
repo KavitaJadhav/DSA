@@ -14,6 +14,7 @@ Stack* create(int elementSize, int no_of_elements){
 }
 bool push(Stack* stack,void* element)
 {
+	if(isFull(stack)) return false;
 	stack->top++;
 	memcpy((stack->elements+(stack->elementSize*stack->top)) , element,stack->elementSize);
 	return true;
@@ -22,6 +23,7 @@ bool push(Stack* stack,void* element)
 void* pop(Stack* stack)
 {
 	void* element;
+	if(isEmpty(stack)) return false;
 	element = stack->elements+(stack->elementSize*stack->top);
 	stack->top--;
 	return element;
