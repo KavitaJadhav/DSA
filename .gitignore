@@ -2,3 +2,5 @@
 *.exe
 testUtil.h
 stackLibTestRunner.c
+*.o
+*.core

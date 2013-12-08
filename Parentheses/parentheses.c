@@ -30,7 +30,7 @@ bool isEmpty(Stack* stack)
 {
 	return (stack->top) == -1;
 }
-int getstatus(Stack* stack , char* data)
+int matchBraces(Stack* stack , char* data)
 {
 	int i;
 	for(i = 0; i<strlen(data); i++)
@@ -59,14 +59,4 @@ int getstatus(Stack* stack , char* data)
 		}	
 	return stack->top;
 }
-int main()
-{
-	Stack* stack;
-	int status;
-	char* data="On {John McPhee's(Oranges):This[must be the {most [entertaining] }industrial ]report {in English.}}";
-	stack=create(20);
-	status = getstatus(stack,data);
-	if(status== -1) printf("\nvalid statement");
-	else printf("\nInvalid statement");
-	return 0;
-}
+
