@@ -101,6 +101,17 @@ void test_enqueue_int_element_at_rear_of_queue(){
 	ASSERT(queue->rear==0);
 	free(queue);
 }
+void test__enqueue_int_element_at_front_of_queue_when_rear_reach_to_end(){
+	Queue* queue;
+	int c=5;
+	queue = create(sizeof(int),5);
+	queue->rear = 4;
+	queue->front =2;
+	ASSERT(enqueue(queue,&c));
+	ASSERT(*(int*)(queue->elements)==5);
+	ASSERT(queue->rear==0);
+	free(queue);
+}
 void test_enqueue_float_element_at_rear_of_queue(){
 	Queue* queue;
 	float c=1.5;

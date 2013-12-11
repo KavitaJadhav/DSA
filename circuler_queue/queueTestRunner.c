@@ -93,6 +93,11 @@ int main(){
 		test_enqueue_int_element_at_rear_of_queue();
 	tearDown();
 	testEnded();
+	testStarted("test__enqueue_int_element_at_front_of_queue_when_rear_reach_to_end");
+	setup();
+		test__enqueue_int_element_at_front_of_queue_when_rear_reach_to_end();
+	tearDown();
+	testEnded();
 	testStarted("test_enqueue_float_element_at_rear_of_queue");
 	setup();
 		test_enqueue_float_element_at_rear_of_queue();

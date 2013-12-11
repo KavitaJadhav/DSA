@@ -28,7 +28,9 @@ void* dequeue(Queue* queue){
 	return element;
 }
 bool isFull(Queue* queue){ 
+
 	if(queue->front == -1 && queue->rear == queue->no_of_elements-1) return true;
+	if((queue->rear == queue->no_of_elements-1)  && (queue->front > 0)) queue->rear = -1;
 	return (queue->front == queue->rear+1);
 }
 bool isEmpty(Queue* queue){
