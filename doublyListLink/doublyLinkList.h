@@ -14,4 +14,8 @@ typedef struct List{
 }List;
 
 List* createList();
-bool insert(List* list , int index , void* data);
+bool insertNode(List* list , int index , void* data);
+
+void insertFirst(List* list , int index ,Node* node );
+void insertMiddle(List* list , int index ,Node* node );
+void insertLast(List* list , int index ,Node* node );

@@ -31,3 +31,21 @@ void test_add_new_process_in_processQueue(){
 	ASSERT(pq->runningProcesses[1] == p2);
 	ASSERT(50 == pq->time_slice);
 }
+void test_scheduleQueue_shedules_process_in_processQueue(){
+	ProcessQueue* pq = createProcessQueue(50);
+	Process* p1 = createProcess("Browser",1,100);
+	Process* p2 = createProcess("Calculater",2,200);
+	Process* p3 = createProcess("gitBash",3,160);
+	pq = addProcess(pq , p1);
+	pq = addProcess(pq , p2);
+	pq = addProcess(pq , p2);
+	pq = scheduleProcesses(pq);
+	ASSERT(3 == pq->rear);
+	ASSERT((pq->runningProcesses[0])->cpuAttempt == 2);
+	ASSERT((pq->runningProcesses[1])->cpuAttempt == 4);
+	ASSERT((pq->runningProcesses[2])->cpuAttempt == 4);
+	ASSERT(pq->runningProcesses[0] == p1);
+	ASSERT(pq->runningProcesses[1] == p2);
+	ASSERT(pq->runningProcesses[2] == p3);
+	ASSERT(50 == pq->time_slice);
+}

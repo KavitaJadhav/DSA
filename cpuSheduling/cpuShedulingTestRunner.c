@@ -64,6 +64,11 @@ int main(){
 		test_add_new_process_in_processQueue();
 	tearDown();
 	testEnded();
+	testStarted("test_scheduleQueue_shedules_process_in_processQueue");
+	setup();
+		test_scheduleQueue_shedules_process_in_processQueue();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
