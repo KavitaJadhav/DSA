@@ -15,6 +15,7 @@ typedef struct List{
 
 List* createList();
 bool insertNode(List* list , int index , void* data);
+bool deleteNode(List* list , int index);
 
 void insertFirst(List* list , int index ,Node* node );
 void insertMiddle(List* list , int index ,Node* node );

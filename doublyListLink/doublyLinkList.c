@@ -45,3 +45,36 @@ bool insertNode(List* list , int index , void* data){
 	list->length++;
 	return true;
 }
+void deleteFirst(List* list){
+	Node* node = list->header;
+	if(list->length == 1) list->header = NULL;
+	else {
+		list->header = list->header->next;
+		list->header->prev = NULL;
+	}
+	free(node);
+}
+void deleteLast(List* list){
+	Node* temp;
+	temp = list->header;
+	while(NULL!=temp->next)
+		temp =temp->next;
+	temp->prev->next = NULL;
+	free(temp);
+}
+void deleteMiddle(List* list , int index){
+	Node* temp;
+	int i=0;
+	temp = list->header;
+	while(i++ < index) temp =temp->next ;
+	temp->prev->next = temp->next;
+	temp->next->prev = temp->prev;
+}
+bool deleteNode(List* list , int index){
+	if(index >= list->length) return false;
+	if(index == 0) deleteFirst(list);
+	else if(index == list->length-1)  deleteLast(list);
+	else deleteMiddle( list , index);
+	list->length--;
+	return true;
+}
