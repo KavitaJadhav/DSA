@@ -16,7 +16,7 @@ void insertFirst(List* list , int index ,Node* node ){
 	node->prev = NULL;
 }
 void insertLast(List* list , int index ,Node* node ){
-	Node* temp;
+	Node* temp = calloc(1, sizeof(Node*));
 	temp = list->header;
 	while(NULL!=temp->next)
 		temp =temp->next;
@@ -55,7 +55,7 @@ void deleteFirst(List* list){
 	free(node);
 }
 void deleteLast(List* list){
-	Node* temp;
+	Node* temp = calloc(1, sizeof(Node*));
 	temp = list->header;
 	while(NULL!=temp->next)
 		temp =temp->next;
