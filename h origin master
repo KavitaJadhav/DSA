@@ -1,0 +1,65 @@
+[33mcommit 9810892872d04f184955acda98d5f862b90dbe03[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Fri Dec 13 20:40:37 2013 +0530
+
+    adding and deleting node from single link list-front,middle,end
+
+[33mcommit 943a916538bf533993be245a28b854591e04e98b[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Fri Dec 13 18:11:01 2013 +0530
+
+    double link list completed , header file changed
+
+[33mcommit 656675c87ab368993a1218df1ce1bb9b9879d278[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Fri Dec 13 17:45:15 2013 +0530
+
+    delete node at front,middle,end of double link list
+
+[33mcommit 2834ac2ac6e27578c205af26c6b5c2b3a2139926[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Fri Dec 13 15:20:37 2013 +0530
+
+    create double link list and insert node at front ,end, middle of the list
+
+[33mcommit 04689856ff5689250252d37e46b9583788e961ff[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Wed Dec 11 19:57:33 2013 +0530
+
+    creating and adding process at the end of process queue
+
+[33mcommit 46661e3b2dcc49dfdeb9a27faf632ad20992c30e[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Mon Dec 9 08:30:35 2013 +0530
+
+    linear queue completed
+
+[33mcommit 959612a2f5da1c07221afdebb154d206aaae9ad0[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Sun Dec 8 22:51:14 2013 +0530
+
+    Binary search completed
+
+[33mcommit 92977409f274cd9774afb6cffcabe3192dfbd8ec[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Sun Dec 8 20:33:28 2013 +0530
+
+    circuler and linear queue completed
+
+[33mcommit 9c4303c181003403d418e6be9a66a60172aeb551[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Tue Dec 3 12:26:01 2013 +0530
+
+    give -1 for balanced parentheses and anything else for unbalanced parenthesis
+
+[33mcommit 2d0c9674ae800180db19837ca4534aa3cff8df12[m
+Author: unknown <kavitama@Inkavitama.corporate.thoughtworks.com>
+Date:   Mon Dec 2 19:54:32 2013 +0530
+
+    create,push,pop without calling isEmpty,isFull
+
+[33mcommit 9675a6732542e487a65faf8703f0c0a8978903af[m
+Author: KavitaJadhav <jadhavkavita206@gmail.com>
+Date:   Sun Dec 1 21:36:51 2013 -0800
+
+    Initial commit

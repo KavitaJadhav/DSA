@@ -10,8 +10,7 @@ List* createList(){
 	return list; 
 }
 void insertFirst(List* list , int index ,Node* node ){
-	if (list->header == NULL) node->next = NULL;
-	if (list->header !=NULL) node->next = list->header;
+	node->next = list->header;
 	list->header = node;
 	node->prev = NULL;
 }
@@ -55,8 +54,7 @@ void deleteFirst(List* list){
 	free(node);
 }
 void deleteLast(List* list){
-	Node* temp = calloc(1, sizeof(Node*));
-	temp = list->header;
+	Node* temp = list->header;
 	while(NULL!=temp->next)
 		temp =temp->next;
 	temp->prev->next = NULL;
@@ -69,6 +67,7 @@ void deleteMiddle(List* list , int index){
 	while(i++ < index) temp =temp->next ;
 	temp->prev->next = temp->next;
 	temp->next->prev = temp->prev;
+	free(temp);
 }
 bool deleteNode(List* list , int index){
 	if(index >= list->length) return false;
