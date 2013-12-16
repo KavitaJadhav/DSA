@@ -17,10 +17,6 @@ List* createList();
 bool insertNode(List* list , int index , void* data);
 bool deleteNode(List* list , int index);
 Node* getDeletedNode(List* list , int index);
-// void insertFirst(List* list , int index ,Node* node );
-// void insertMiddle(List* list , int index ,Node* node );
-// void insertLast(List* list , int index ,Node* node );
 
-// void deleteFirst(List* list);
-// void deleteLast(List* list);
-// void deleteMiddle(List* list , int index);
+typedef int (*Compare)(void* sourceItem, void* destinationItem);
+List* SortList(List* list , Compare compare);

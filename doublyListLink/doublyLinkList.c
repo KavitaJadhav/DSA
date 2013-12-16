@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 
+
 List* createList(){
 	List* list =calloc(1, sizeof(List));
 	list->header = NULL;
@@ -40,10 +41,11 @@ bool insertNode(List* list , int index , void* data){
 	if (index == 0)	insertFirst(list, index, node);
 	else if(index == list->length)	insertLast(list, index,node);
 	else insertMiddle(list, index, node);
-	node->data = data;
+	 node->data = data;
 	list->length++;
 	return true;
-}
+};
+
 void deleteFirst(List* list){
 	Node* node = list->header;
 	if(list->length == 1) list->header = NULL;

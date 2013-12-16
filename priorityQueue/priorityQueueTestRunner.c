@@ -27,7 +27,6 @@ void resetTestCount(){
 	passCount=0;
 	printf("********* Starting tests\n\n");
 }
-
 void summarizeTestCount(){
 	printf("\n********* Ran %d tests passed %d failed %d\n",testCount,passCount,testCount-passCount);
 }
@@ -49,44 +48,9 @@ int main(){
 	fixtureSetup();
 	resetTestCount();
 
-	testStarted("test_1");
+	testStarted("test_insert_data_in_queue1");
 	setup();
-		test_1();
-	tearDown();
-	testEnded();
-	testStarted("test_2");
-	setup();
-		test_2();
-	tearDown();
-	testEnded();
-	testStarted("test_3");
-	setup();
-		test_3();
-	tearDown();
-	testEnded();
-	testStarted("test_4");
-	setup();
-		test_4();
-	tearDown();
-	testEnded();
-	testStarted("test_5");
-	setup();
-		test_5();
-	tearDown();
-	testEnded();
-	testStarted("test_6");
-	setup();
-		test_6();
-	tearDown();
-	testEnded();
-	testStarted("test_7");
-	setup();
-		test_7();
-	tearDown();
-	testEnded();
-	testStarted("test_8");
-	setup();
-		test_8();
+		test_insert_data_in_queue1();
 	tearDown();
 	testEnded();
 

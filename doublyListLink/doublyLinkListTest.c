@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdio.h>
 //create setup, tearDown, fixtureSetup, fixtureTearDown methods if needed
 
 bool confirmHeader(List* list){
@@ -326,13 +327,9 @@ void test_delete_node_with_float_data_at_middle_of_linked_list(){
 	ASSERT(2 == list->length);
 }
 void test_delete_node_with_string_data_at_middle_of_linked_list(){
-	List* list;
-	string data1,data2,data3;
+	List* list  = createList();
+	string data1 = "kajal",data2 = "shital",data3 ="manali";
 	Node* node = calloc(1,sizeof(node));
-	strcpy(data1 , "kajal");
-	strcpy(data2 , "shital");
-	strcpy(data3 , "manali");
-	list = createList();
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,1,&data3);
@@ -342,4 +339,26 @@ void test_delete_node_with_string_data_at_middle_of_linked_list(){
 	node = (list->header)->next;
 	ASSERT(!strcmp(*(string*)(node->data) , "shital"));
 }
+
+// int compareByfirstElement(Data* a,Data* b){
+// 	// printf("%p\n",a );
+// 	// if (a->data > b->data); return 1;
+// 	// return 0;
+// }
+
+// void test_sort_linked_list(){
+// 	List* list= createList(); 
+// 	Data* data1 ={10 , 1};
+// 	Data* data2 ={20 , 2};
+// 	Data* data3 ={30 , 3};
+// 	Data* data4 ={60 , 2};
+// 	printf("%p\n",data1 );
+// 	ASSERT(insertNode(list,0,&data1));
+// 	ASSERT(insertNode(list,1,&data2));
+// 	ASSERT(insertNode(list,2,&data3));
+// 	ASSERT(insertNode(list,3,&data4));
+// 	ASSERT(4 == list->length);
+// 	SortList(list,compareByfirstElement);
+// 	ASSERT(*(int*)list->header->data == 1 );
+// }
 
