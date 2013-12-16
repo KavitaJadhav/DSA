@@ -16,10 +16,20 @@ void insertFirst(Queue* queue ,Node* node ){
 void insertbyPriority(Queue* queue ,Node* node ){
 	Node* temp ;
 	temp = queue->head;
-	while(node->priority > temp->priority && temp->next!=NULL) 		temp =temp->next;
-	node->next = temp->next;
-	temp->next = node;
-	node->prev=temp;
+	while(node->priority >= temp->priority && temp->next!=NULL)
+		temp =temp->next;
+	if(temp->priority > node->priority){
+		node->next = temp;
+		node->prev = temp->prev;
+		temp->prev->next = node;
+		temp->prev = node;
+	}
+	else{
+		node->prev=temp;
+		node->next = temp->next;
+		if(temp->next != NULL) temp->next->prev = node;
+		temp->next = node;
+	}
 }
 int insertData( Queue* queue , void* data , int priority){
 	int i=0;
@@ -27,8 +37,7 @@ int insertData( Queue* queue , void* data , int priority){
 	node->data = data;
 	node->priority = priority;
 	if (queue->length == 0)	insertFirst(queue, node);
-	else
-		insertbyPriority(queue,node);
+	else insertbyPriority(queue,node);
 	queue->length++;
 	return 1;
 }
@@ -37,5 +46,6 @@ void* deleteData( Queue* queue){
 	if(queue->head == NULL) return NULL;
 	node = queue->head;
 	queue->head = node->next;
+	queue->length--;
 	return node->data;
 }

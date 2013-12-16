@@ -14,4 +14,4 @@ typedef struct Queue{
 
 Queue* createQueue();
 int insertData( Queue* queue ,void* data,int priority);
-void* DeleteData( Queue* queue);
+void* deleteData(Queue* queue);
