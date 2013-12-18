@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include "../doublyLinkList/doublyLinkList.h"
+#include "../doubly-linked-list/doublyLinkList.h"
 
 typedef  List Stack;
 
