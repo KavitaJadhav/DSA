@@ -9,8 +9,8 @@ typedef struct{
 }Stack;
 
 Stack* create(int,int);
-bool push(Stack* stack,void* element);
+int push(Stack* stack,void* element);
 void* pop(Stack* stack);
-bool isFull(Stack* stack);
-bool isEmpty(Stack* stack);
+int isFull(Stack* stack);
+int isEmpty(Stack* stack);
 

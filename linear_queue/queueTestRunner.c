@@ -48,26 +48,6 @@ int main(){
 	fixtureSetup();
 	resetTestCount();
 
-	testStarted("test_create_queue_allocates_memory_for_five_char_elements");
-	setup();
-		test_create_queue_allocates_memory_for_five_char_elements();
-	tearDown();
-	testEnded();
-	testStarted("test_create_queue_allocates_memory_for_five_int_elements");
-	setup();
-		test_create_queue_allocates_memory_for_five_int_elements();
-	tearDown();
-	testEnded();
-	testStarted("test_create_queue_allocates_memory_for_five_float_elements");
-	setup();
-		test_create_queue_allocates_memory_for_five_float_elements();
-	tearDown();
-	testEnded();
-	testStarted("test_create_queue_allocates_memory_for_five_char_strings");
-	setup();
-		test_create_queue_allocates_memory_for_five_char_strings();
-	tearDown();
-	testEnded();
 	testStarted("test_enqueue_char_element_at_rear_of_queue");
 	setup();
 		test_enqueue_char_element_at_rear_of_queue();
@@ -88,9 +68,9 @@ int main(){
 		test_enqueue_string_element_at_rear_of_queue();
 	tearDown();
 	testEnded();
-	testStarted("test_33_dequeue_char_element_at_rear_of_queue");
+	testStarted("test_dequeue_char_element_at_front_of_queue");
 	setup();
-		test_33_dequeue_char_element_at_rear_of_queue();
+		test_dequeue_char_element_at_front_of_queue();
 	tearDown();
 	testEnded();
 	testStarted("test_33_dequeue_int_element_at_rear_of_queue");

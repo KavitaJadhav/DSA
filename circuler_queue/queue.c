@@ -1,8 +1,7 @@
-#include "queue.h"
+#include "customTypes.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 Queue* create(int elementSize, int no_of_elements){
 	Queue* queue = calloc(1,sizeof(Queue));
@@ -13,27 +12,27 @@ Queue* create(int elementSize, int no_of_elements){
 	queue->elementSize=elementSize;
 	return queue;
 }
-bool enqueue(Queue* queue,void* element)
+int enqueue(Queue* queue,void* element)
 {
-	if(isFull(queue)) return false;
+	if(isFull(queue)) return 0;
 	queue->rear++;
 	memcpy((queue->elements+(queue->elementSize*queue->rear)) , element,queue->elementSize);
-	return true;
+	return 1;
 }
 void* dequeue(Queue* queue){
 	void* element = malloc(queue->elementSize);
-	if(isEmpty(queue)) return false;
+	if(isEmpty(queue)) return 0;
 	queue->front++;
 	memmove(element, queue->elements+(queue->elementSize*queue->front), queue->elementSize);
 	return element;
 }
-bool isFull(Queue* queue){ 
+int isFull(Queue* queue){ 
 
-	if(queue->front == -1 && queue->rear == queue->no_of_elements-1) return true;
+	if(queue->front == -1 && queue->rear == queue->no_of_elements-1) return 1;
 	if((queue->rear == queue->no_of_elements-1)  && (queue->front > 0)) queue->rear = -1;
 	return (queue->front == queue->rear+1);
 }
-bool isEmpty(Queue* queue){
-	if(queue->front ==-1 && queue->rear == -1) return true;
+int isEmpty(Queue* queue){
+	if(queue->front ==-1 && queue->rear == -1) return 1;
 	return (queue->front == queue->rear+1);
 }

@@ -12,4 +12,4 @@ Stack* create(int no_of_elements);
 bool push(Stack* stack,char* element);
 char pop(Stack* stack);
 bool isEmpty(Stack* stack);
-int matchBraces(Stack* stack , char* data);
+int matchBracket(Stack* stack , char* data);

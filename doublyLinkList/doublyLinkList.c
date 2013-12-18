@@ -35,13 +35,14 @@ void insertMiddle(List* list , int index ,Node* node ){
 	(node->next)->prev =node;
 }
 bool insertNode(List* list , int index , void* data){
-	int i=0;
 	Node* node = calloc(1,sizeof(node));
 	if (index > list->length) return false;
+	
 	if (index == 0)	insertFirst(list, index, node);
 	else if(index == list->length)	insertLast(list, index,node);
 	else insertMiddle(list, index, node);
-	 node->data = data;
+	
+	node->data = data;
 	list->length++;
 	return true;
 };

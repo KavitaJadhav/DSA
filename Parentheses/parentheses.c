@@ -10,15 +10,13 @@ Stack* create(int no_of_elements){
 	stack->no_of_elements=no_of_elements;
 	return stack;
 }
-bool push(Stack* stack,char* element)
-{
+bool push(Stack* stack,char* element){
 	stack->top++;
 	memcpy((stack->elements+(stack->top)) ,element,sizeof(char));
 	memcpy(&stack->topElement,element,sizeof(char));
 	return true;
 }
-char pop(Stack* stack)
-{
+char pop(Stack* stack){
 	char element;
 	if(isEmpty(stack)) return false;
 	element=stack->topElement;
@@ -26,37 +24,34 @@ char pop(Stack* stack)
 	stack->topElement = stack->elements[stack->top];
 	return element;
 }
-bool isEmpty(Stack* stack)
-{
+bool isEmpty(Stack* stack){
 	return (stack->top) == -1;
 }
-int matchBraces(Stack* stack , char* data)
-{
+int matchBracket(Stack* stack , char* data){
 	int i;
-	for(i = 0; i<strlen(data); i++)
-		{
-			switch(data[i]){
-				case '{' :
-				case '[' :
-				case '(' :
-					push(stack,&data[i]);
-					break;
-				case '}' :
-					if(stack->topElement == '{') pop(stack) ;
-					else push(stack,&data[i]);
-					break;
-				case ']' :
-					if(stack->topElement == '[') pop(stack) ;
-					else push(stack,&data[i]);
-					break;
-				case ')' :
-	 				if(stack->topElement == '(') pop(stack) ;
-					else push(stack,&data[i]);
-					break;
-				 default:
-					break;
-			}
-		}	
+	for(i = 0; i<strlen(data); i++){
+		switch(data[i]){
+			case '{' :
+			case '[' :
+			case '(' :
+				push(stack,&data[i]);
+				break;
+			case '}' :
+				if(stack->topElement == '{') pop(stack) ;
+				else push(stack,&data[i]);
+				break;
+			case ']' :
+				if(stack->topElement == '[') pop(stack) ;
+				else push(stack,&data[i]);
+				break;
+			case ')' :
+ 				if(stack->topElement == '(') pop(stack) ;
+				else push(stack,&data[i]);
+				break;
+			 default:
+				break;
+		}
+	}	
 	return stack->top;
 }
 

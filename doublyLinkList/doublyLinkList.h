@@ -17,6 +17,3 @@ List* createList();
 bool insertNode(List* list , int index , void* data);
 bool deleteNode(List* list , int index);
 Node* getDeletedNode(List* list , int index);
-
-typedef int (*Compare)(void* sourceItem, void* destinationItem);
-List* SortList(List* list , Compare compare);

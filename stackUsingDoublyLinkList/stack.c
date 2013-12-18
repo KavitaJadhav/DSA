@@ -1,18 +1,18 @@
 #include "stack.h"
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 Stack* createStack(){
 	Stack* stack  =createList();
 	return stack;
 }
-bool push(Stack* stack,void* element){
+int push(Stack* stack,void* element){
 	return insertNode(stack , stack->length, element);
 }
 void* pop(Stack* stack){
-	void* data = top(stack);
+	void* data;
+	if(stack->header != NULL ) data = top(stack);
+	else return 0;
 	deleteNode(stack, stack->length-1);
 	return data;
 }

@@ -6,8 +6,8 @@ void test_1(){
 	Stack* stack;
 	char* data;
 	stack=create(20);
-	data="On {John McPhee's( Oranges):This[must be the {most [entertaining] }industrial ]report {in English.}}";
-	status = matchBraces(stack,data);
+	data="";
+	status = matchBracket(stack,data);
 	ASSERT(-1==status);
 };
 void test_2(){
@@ -16,7 +16,7 @@ void test_2(){
 	char* data;
 	stack=create(20);
 	data="{}";
-	status = matchBraces(stack,data);
+	status = matchBracket(stack,data);
 	ASSERT(-1==status);
 };
 void test_3(){
@@ -25,7 +25,7 @@ void test_3(){
 	char* data;
 	stack=create(20);
 	data="[]";
-	status = matchBraces(stack,data);
+	status = matchBracket(stack,data);
 	ASSERT(-1==status);
 };
 void test_4(){
@@ -34,7 +34,7 @@ void test_4(){
 	char* data;
 	stack=create(20);
 	data="()";
-	status = matchBraces(stack,data);
+	status = matchBracket(stack,data);
 	ASSERT(-1==status);
 };
 void test_5(){
@@ -43,7 +43,7 @@ void test_5(){
 	char* data;
 	stack=create(20);
 	data="{[({}[])]}";
-	status = matchBraces(stack,data);
+	status = matchBracket(stack,data);
 	ASSERT(-1==status);
 };
 void test_6(){
@@ -52,7 +52,7 @@ void test_6(){
 	char* data;
 	stack=create(20);
 	data="{([)}";
-	status = matchBraces(stack,data);
+	status = matchBracket(stack,data);
 	ASSERT(4==status);
 };
 void test_7(){
@@ -61,7 +61,7 @@ void test_7(){
 	char* data;
 	stack=create(20);
 	data="{()[}";
-	status = matchBraces(stack,data);
+	status = matchBracket(stack,data);
 	ASSERT(2==status);
 };
 void test_8(){
@@ -69,7 +69,7 @@ void test_8(){
 	Stack* stack;
 	char* data;
 	stack=create(20);
-	data="";
-	status = matchBraces(stack,data);
+	data="On {John McPhee's( Oranges):This[must be the {most [entertaining] }industrial ]report {in English.}}";
+	status = matchBracket(stack,data);
 	ASSERT(-1==status);
 };

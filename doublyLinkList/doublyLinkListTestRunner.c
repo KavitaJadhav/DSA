@@ -179,11 +179,6 @@ int main(){
 		test_delete_node_with_string_data_at_middle_of_linked_list();
 	tearDown();
 	testEnded();
-	testStarted("test_sort_linked_list");
-	setup();
-		test_sort_linked_list();
-	tearDown();
-	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();

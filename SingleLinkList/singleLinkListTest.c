@@ -134,9 +134,11 @@ void test_insert_node_with_float_data_at_middle_of_linked_list(){
 	float data1 = 10.5f,data2= 20.5f,data3=30.5f;
 	Node* node = calloc(1,sizeof(node));
 	list = createList();
+	
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,1,&data3);
+	
 	ASSERT(3 == list->length);
 	ASSERT(*(float*)list->header->data == 10.5f);
 	node = (list->header)->next;
@@ -149,9 +151,11 @@ void test_insert_node_with_double_data_at_middle_of_linked_list(){
 	double data1 = 10.5,data2= 20.5,data3=30.5;
 	Node* node = calloc(1,sizeof(node));
 	list = createList();
+	
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,1,&data3);
+	
 	ASSERT(3 == list->length);
 	ASSERT(*(double*)list->header->data == 10.5);
 	node = (list->header)->next;
@@ -161,15 +165,14 @@ void test_insert_node_with_double_data_at_middle_of_linked_list(){
 }
 void test_insert_node_with_string_data_at_middle_of_linked_list(){
 	List* list;
-	string data1,data2,data3;
+	string data1 = "kajal" ,data2 = "shital" ,data3 = "manali";
 	Node* node = calloc(1,sizeof(node));
-	strcpy(data1 , "kajal");
-	strcpy(data2 , "shital");
-	strcpy(data3 , "manali");
 	list = createList();
+
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,1,&data3);
+
 	ASSERT(3 == list->length);
 	ASSERT(!strcmp(*(string*)list->header->data , "kajal"));
 	node = (list->header)->next;
@@ -182,10 +185,12 @@ void test_insert_node_with_int_data_at_middle_of_linked_list1(){
 	int data1 = 10,data2= 20,data3=30,data4=40;
 	Node* node = calloc(1,sizeof(node));
 	list = createList();
+
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,2,&data3);
 	insertNode(list,2,&data4);
+
 	ASSERT(4 == list->length);
 	ASSERT(*(int*)list->header->data == 10);
 	node = (list->header)->next;
@@ -254,9 +259,11 @@ void test_delete_node_with_int_data_at_end_of_linked_list(){
 	Node* node;
 	int data1 = 10 , data2 = 20 , data3 = 30;
 	list = createList();
+
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,1,&data3);
+
 	ASSERT(3 == list->length);
 	deleteNode(list,2);
 	ASSERT(*(int*)list->header->data == 10);
@@ -270,9 +277,11 @@ void test_delete_node_with_float_data_at_end_of_linked_list(){
 	Node* node;
 	int data1 = 10 , data2 = 20 , data3 = 30;
 	list = createList();
+
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,2,&data3);
+
 	ASSERT(3 == list->length);
 	deleteNode(list,2);
 	ASSERT(*(int*)list->header->data == 10);
@@ -286,10 +295,12 @@ void test_delete_node_with_int_data_at_middle_of_linked_list(){
 	int data1 = 10,data2= 20,data3=30,data4=40;
 	Node* second;// = calloc(1,sizeof(Node));
 	list = createList();
+
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,2,&data3);
 	insertNode(list,3,&data4);
+
 	ASSERT(4 == list->length);
 	deleteNode(list, 1);
 	ASSERT(*(int*)list->header->data == 10);
@@ -304,9 +315,11 @@ void test_delete_node_with_float_data_at_middle_of_linked_list(){
 	float data1 = 10.5f,data2= 20.5f,data3=30.5f;
 	Node* node = calloc(1,sizeof(node));
 	list = createList();
+
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,2,&data3);
+
 	ASSERT(3 == list->length);
 	deleteNode(list, 1);
 	ASSERT(*(float*)list->header->data == 10.5f);
@@ -315,16 +328,14 @@ void test_delete_node_with_float_data_at_middle_of_linked_list(){
 	ASSERT(2 == list->length);
 }
 void test_delete_node_with_string_data_at_middle_of_linked_list(){
-	List* list;
-	string data1,data2,data3;
+	string data1 = "kajal" ,data2 = "shital" ,data3 = "manali";
 	Node* node = calloc(1,sizeof(node));
-	strcpy(data1 , "kajal");
-	strcpy(data2 , "shital");
-	strcpy(data3 , "manali");
-	list = createList();
+	List* list = createList();
+
 	insertNode(list,0,&data1);
 	insertNode(list,1,&data2);
 	insertNode(list,1,&data3);
+
 	ASSERT(3 == list->length);
 	deleteNode(list, 1);
 	ASSERT(!strcmp(*(string*)list->header->data , "kajal"));
