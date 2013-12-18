@@ -49,11 +49,6 @@ int main(){
 	fixtureSetup();
 	resetTestCount();
 
-	testStarted("test_createList_function_call_assigns_header_to_null_and_length_to_zero");
-	setup();
-		test_createList_function_call_assigns_header_to_null_and_length_to_zero();
-	tearDown();
-	testEnded();
 	testStarted("test_insert_node_at_index_which_not_exist_return_false");
 	setup();
 		test_insert_node_at_index_which_not_exist_return_false();
