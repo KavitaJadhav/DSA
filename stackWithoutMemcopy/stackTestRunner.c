@@ -48,9 +48,9 @@ int main(){
 	fixtureSetup();
 	resetTestCount();
 
-	testStarted("test_creates_a_stack_for_with_given_length");
+	testStarted("test_pop_thee_element_of_the_empty_stack_return_false");
 	setup();
-		test_creates_a_stack_for_with_given_length();
+		test_pop_thee_element_of_the_empty_stack_return_false();
 	tearDown();
 	testEnded();
 	testStarted("test_pushes_the_element_at_the_top_of_the_stack_for_integers");
@@ -58,9 +58,34 @@ int main(){
 		test_pushes_the_element_at_the_top_of_the_stack_for_integers();
 	tearDown();
 	testEnded();
+	testStarted("test_push_string_element_at_top_of_stack");
+	setup();
+		test_push_string_element_at_top_of_stack();
+	tearDown();
+	testEnded();
 	testStarted("test_push_integer_elements_at_the_top_of_the_stack");
 	setup();
 		test_push_integer_elements_at_the_top_of_the_stack();
+	tearDown();
+	testEnded();
+	testStarted("test_push_char_element_at_top_of_stack1");
+	setup();
+		test_push_char_element_at_top_of_stack1();
+	tearDown();
+	testEnded();
+	testStarted("test_push_float_element_at_top_of_stack1");
+	setup();
+		test_push_float_element_at_top_of_stack1();
+	tearDown();
+	testEnded();
+	testStarted("test_push_double_memory_when_stack_is_full");
+	setup();
+		test_push_double_memory_when_stack_is_full();
+	tearDown();
+	testEnded();
+	testStarted("test_top_ggives_top_element_of_stack1");
+	setup();
+		test_top_ggives_top_element_of_stack1();
 	tearDown();
 	testEnded();
 

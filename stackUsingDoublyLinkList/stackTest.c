@@ -17,7 +17,7 @@ void test_push_char_element_at_top_of_stack(){
 }
 void test_push_int_element_at_top_of_stack(){
 	int element = 50;
-	Stack* stack = createStack();
+	Stack* stack = createStack();	
 	push(stack , &element);
 	ASSERT(50 == *(int*)pop(stack));	
 }

@@ -54,19 +54,14 @@ int main(){
 		test_create_process_return_new_process();
 	tearDown();
 	testEnded();
-	testStarted("test_create_processQueue_return_new_processQueue");
-	setup();
-		test_create_processQueue_return_new_processQueue();
-	tearDown();
-	testEnded();
 	testStarted("test_add_new_process_in_processQueue");
 	setup();
 		test_add_new_process_in_processQueue();
 	tearDown();
 	testEnded();
-	testStarted("test_scheduleQueue_shedules_process_in_processQueue");
+	testStarted("test_executeProcess_schedules_process_in_processQueue");
 	setup();
-		test_scheduleQueue_shedules_process_in_processQueue();
+		test_executeProcess_schedules_process_in_processQueue();
 	tearDown();
 	testEnded();
 

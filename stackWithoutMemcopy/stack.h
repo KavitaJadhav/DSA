@@ -4,7 +4,7 @@ typedef struct {
     int length;
 } Stack;
 
-typedef char String[256];
+typedef char string[256];
 
 Stack* create(int length);
 int push(Stack* stack,void* element);

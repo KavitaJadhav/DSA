@@ -5,35 +5,71 @@
 
 //create setup, tearDown, fixtureSetup, fixtureTearDown methods if needed
 
-int areEqual(Stack a, Stack b){
-    int result = a.length == b.length && a.top == b.top;
-    if(!result) return result;
-    return 0 == memcmp(a.elements,b.elements,a.length*sizeof(void*));
-}
-void test_creates_a_stack_for_with_given_length (){
-    Stack* stack = create(3);
-    void* array[3] = {NULL,NULL,NULL};
-    Stack expected = {array,-1,3};
-    ASSERT(areEqual(expected, *stack));
-    dispose(stack);
-}
+void test_pop_thee_element_of_the_empty_stack_return_false(){
+    Stack* stack = create(1);
+    ASSERT(! pop(stack));
+};
 void test_pushes_the_element_at_the_top_of_the_stack_for_integers(){
     int num = 400;
     Stack* stack = create(1);
     push(stack, &num);
-    ASSERT(400 == **(int**)stack->elements);
-    ASSERT(0 == stack->top && 1 == stack->length);
-    dispose(stack);
+    ASSERT(&num == pop(stack));
 };
-
-void test_push_integer_elements_at_the_top_of_the_stack(){
-    int num1 = 400 , num2 = 500 , num3 = 600;
+void test_push_string_element_at_top_of_stack(){
+    string element = "AAA";
     Stack* stack = create(2);
-    push(stack, &num1);
-    push(stack, &num2);
-    push(stack, &num3);
-   	ASSERT(&num3==pop(stack));
-   	ASSERT(&num2==pop(stack));
-   	ASSERT(&num1==pop(stack));
-    dispose(stack);
+    push(stack , &element);
+    ASSERT(!strcmp("AAA" , *(string*)pop(stack)));
+}
+void test_push_integer_elements_at_the_top_of_the_stack(){
+    int data[] = {400,500,600};
+    Stack* stack = create(2);
+    push(stack, &data[0]);
+    push(stack, &data[1]);
+    push(stack, &data[2]);
+   	ASSERT(&data[2] == pop(stack));
+    ASSERT(&data[1] == pop(stack));
+    ASSERT(&data[0] == pop(stack));
 };
+void test_push_char_element_at_top_of_stack1(){
+    int elements[] = {'A','B','C','D','E'};
+    Stack* stack = create(5);
+
+    push(stack , &elements[0]);
+    push(stack , &elements[1]);
+    push(stack , &elements[2]);
+
+    ASSERT(&elements[2] == pop(stack));    
+    ASSERT(&elements[1] == pop(stack));    
+    ASSERT(&elements[0] == pop(stack));    
+}
+void test_push_float_element_at_top_of_stack1(){
+    float elements[] = {10.5f,20.5f,30.5f,40.5f,50.5f};
+    Stack* stack = create(5);
+
+    push(stack , &elements[0]);
+    push(stack , &elements[1]);
+    push(stack , &elements[2]);
+
+    ASSERT(&elements[2] == pop(stack));    
+    ASSERT(&elements[1] == pop(stack));    
+    ASSERT(&elements[0] == pop(stack));    
+}
+void test_push_double_memory_when_stack_is_full(){
+    int data[] = {400,500,600};
+    Stack* stack = create(2);
+    push(stack, &data[0]);
+    push(stack, &data[1]);
+    ASSERT(&data[1] == pop(stack));
+    ASSERT(&data[0] == pop(stack));
+};
+void test_top_ggives_top_element_of_stack1(){
+    int elements[] = {10,20,30,40,50};
+    Stack* stack = create(5);
+
+    push(stack , &elements[0]);
+    push(stack , &elements[1]);
+    push(stack , &elements[2]);
+
+    ASSERT(&elements[2] == top(stack));     
+}

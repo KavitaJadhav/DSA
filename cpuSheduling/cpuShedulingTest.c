@@ -23,14 +23,6 @@ void test_create_process_return_new_process(){
 	ASSERT(0 == p1->cpuAttempt);
 	ASSERT(!strcmp("Browser" , p1->name));
 }
-void test_create_processQueue_return_new_processQueue(){
-	ProcessQueue* pq;
-	pq = createProcessQueue(50);
-
-	ASSERT(0 == pq->length);
-	ASSERT(!pq->head);
-	ASSERT(50 == pq->time_slice);
-}
 void test_add_new_process_in_processQueue(){
 	ProcessQueue* pq = createProcessQueue(50);
 	Process* p1 = createProcess("Browser",1,100);
@@ -43,9 +35,8 @@ void test_add_new_process_in_processQueue(){
 
 	ASSERT(3 == pq->length);
 	checkPriority(pq);
-	ASSERT(50 == pq->time_slice);
 }
-void test_scheduleQueue_shedules_process_in_processQueue(){
+void test_executeProcess_schedules_process_in_processQueue(){
 	ProcessQueue* pq = createProcessQueue(50);
 
 	Process* p1 = createProcess("Browser",1,100);
@@ -60,7 +51,7 @@ void test_scheduleQueue_shedules_process_in_processQueue(){
 
 	checkPriority(pq);
 	ASSERT(4 == pq->length);
-	pq = scheduleProcesses(pq);
+	pq = executeProcess(pq);
 	ASSERT(0 == pq->length);
 
 	ASSERT(p1->cpuAttempt == 2);

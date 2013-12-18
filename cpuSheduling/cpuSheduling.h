@@ -10,7 +10,7 @@ typedef struct Process{
 	int exTime;
 	int remainTime;
 	int cpuAttempt;
-}Process;
+} Process;
 
 typedef struct{
 	Process* head;
@@ -21,5 +21,5 @@ typedef struct{
 Process* createProcess(string name,int priority,int exTime);
 ProcessQueue* createProcessQueue(int time_slice);
 bool addProcess(ProcessQueue* pq , Process* p1);
-ProcessQueue* scheduleProcesses(ProcessQueue* pq);
+ProcessQueue* executeProcess(ProcessQueue* pq);
 

@@ -59,8 +59,8 @@ void test_2_sorting_an_array_of_double(){
     ASSERT(0 == memcmp(expected, data, sizeof(expected)));
 }
 void test_3_sorting_an_array_of_float(){
-    float expected[] = {1.0,2.0,3.0,4.0};
-    float data[] = {4.0,3.0,1.0,2.0};
+    float expected[] = {1.0f,2.0f,3.0f,4.0f};
+    float data[] = {4.0f,3.0f,1.0f,2.0f};
     isort(data, 4, sizeof(float), compareFloat);
     ASSERT(0 == memcmp(expected, data, sizeof(expected)));
 }

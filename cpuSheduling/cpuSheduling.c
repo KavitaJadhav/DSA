@@ -47,20 +47,20 @@ bool addProcess(ProcessQueue* pq , Process* p1){
 	pq->length++;
 	return 1;
 }
-ProcessQueue* scheduleProcesses(ProcessQueue* pq){
+ProcessQueue* executeProcess(ProcessQueue* pq){
 	Process* temp = pq->head;
 	while(pq->length > 0)
 	{	
-			if(temp->remainTime > pq->time_slice )
-				temp->remainTime = temp->remainTime - pq->time_slice;
-			else{
-				temp->remainTime = 0;
-				temp->next->prev = temp->prev;
-				temp->prev->next = temp->next;
-				pq->length--;
-			}
-			temp->cpuAttempt ++;
-			temp = temp->next;
+		if(temp->remainTime > pq->time_slice )
+			temp->remainTime = temp->remainTime - pq->time_slice;
+		else{
+			temp->remainTime = 0;
+			temp->next->prev = temp->prev;
+			temp->prev->next = temp->next;
+			pq->length--;
+		}
+		temp->cpuAttempt ++;
+		temp = temp->next;
 	}
 	return pq;
 }

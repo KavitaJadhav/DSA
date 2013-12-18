@@ -9,11 +9,6 @@
 bool confirmHeader(List* list){
 	return (list->header->next ==NULL && list->header->prev == NULL);
 }
-void test_createList_function_call_assigns_header_to_null_and_length_to_zero(){
-	List* list = createList();
-	ASSERT(NULL == list->header);
-	ASSERT(0 == list->length);
-}
 void test_insert_node_at_index_which_not_exist_return_false(){
 	int data1 = 10,data2= 20;
 	Node* node = calloc(1,sizeof(node));
@@ -21,20 +16,17 @@ void test_insert_node_at_index_which_not_exist_return_false(){
 
 	ASSERT(insertNode(list,0,&data1));
 	ASSERT(!insertNode(list,4,&data2));
-	ASSERT(1 == list->length);
 }
 void test_insert_node_with_int_data_at_starting_of_linked_list(){
 	int data = 10;
 	List* list = createList();
 	ASSERT(insertNode(list,0,&data));
-	ASSERT(1 == list->length);
 	ASSERT(confirmHeader(list));
 }
 void test_insert_node_with_string_data_at_starting_of_linked_list(){
 	string data = "hello";
 	List* list = createList();
 	ASSERT(insertNode(list,0,&data));
-	ASSERT(1 == list->length);
 	ASSERT(confirmHeader(list));
 }
 void test_insert_node_with_Float_data_at_starting_of_linked_list(){

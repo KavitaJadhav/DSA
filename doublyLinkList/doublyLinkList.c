@@ -1,8 +1,6 @@
 #include "doublyLinkList.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
-
 
 List* createList(){
 	List* list =calloc(1, sizeof(List));
