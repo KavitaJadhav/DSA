@@ -29,16 +29,16 @@ void insertMiddle(List* list , int index ,Node* node ){
 	node->next=temp->next;
 	temp->next =node;
 }
-bool insertNode(List* list , int index , void* data){
+int insertNode(List* list , int index , void* data){
 	int i=0;
 	Node* node = calloc(1,sizeof(node));
-	if (index > list->length) return false;
+	if (index > list->length) return 0;
 	if (index == 0)	insertFirst(list, index, node);
 	else if(index == list->length)	insertLast(list, index,node);
 	else insertMiddle(list, index, node);
 	node->data = data;
 	list->length++;
-	return true;
+	return 1;
 }
 void deleteFirst(List* list){
 	Node* node = list->header;
@@ -67,11 +67,34 @@ void deleteMiddle(List* list , int index){
 	temp->next = node->next;
 	free(node);
 }
-bool deleteNode(List* list , int index){
-	if(index >= list->length) return false;
+int deleteNode(List* list , int index){
+	if(index >= list->length) return 0;
 	if(index == 0) deleteFirst(list);
 	else if(index == list->length-1)  deleteLast(list);
 	else deleteMiddle( list , index);
 	list->length--;
-	return true;
+	return 1;
+}
+void* getElement(List* list , int index){
+	int i=0;
+	void* data;
+	Node* node;
+	if(index >= list->length) return NULL;
+	else{
+		node = list->header;
+		while(i++ < index) node = node->next ;
+	}
+	return node->data;
+}
+int search(List* list , void* element , Compare compare){
+	Node* node;
+	int index= 0;
+	if(0 == list->length) return -1;
+	node = list->header;
+	while(node->next != NULL){
+		if (!compare(element , node->data)) return index;
+		index++;
+		node = node->next;
+	}
+	return -1;
 }

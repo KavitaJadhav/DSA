@@ -20,7 +20,6 @@ void test_search_element_from_the_character_array(){
     char elements[3] = {'a','b','c'};
     char key = 'b';
     char* result = search_generic(elements,&key, 3, sizeof(char), compareChar);
-    ASSERT('b' == *result);
     ASSERT(&elements[1] == result);
 };
 void test_search_element_from_the_character_array_which_is_not_found(){
@@ -34,21 +33,18 @@ void test_search_first_element_from_thecharacter_array_if_elements_are_same(){
     char elements[2] = {'a','a'};
     char key = 'a';
     char* result = search_generic(elements,&key, 2, sizeof(char), compareChar);
-    ASSERT('a' == *result);
     ASSERT(&elements[0] == result);
 };
 void test_search_last_element_from_the_character_array_if_elements_are_same_with_diff_characters(){
     char elements[3] = {'a','a','b'};
     char key = 'a';
     char* result = search_generic(elements,&key, 3, sizeof(char), compareChar);
-    ASSERT('a' == *result);
     ASSERT(&elements[1] == result);
 };
 void test_search_element_from_the_integer_array(){
     int elements[5] = {3,6,0,8,1};
     int key = 8;
     int* result = search_generic(elements,&key, 5, sizeof(int), compareInt);
-    ASSERT(8 == *result);
     ASSERT(&elements[3] == result);
 };
 void test_search_element_from_the_integer_array_which_not_found(){
@@ -61,28 +57,24 @@ void test_search_1st_element_from_the_integer_array(){
     int elements[5] = {4,9,3};
     int key = 4;
     int* result = search_generic(elements,&key, 2, sizeof(int), compareInt);
-    ASSERT(4 == *result);
     ASSERT(&elements[0] == result);
 };
 void test_search_middle_element_from_the_integer_array(){
     int elements[5] = {5,5,7,8,2};
     int key = 7;
     int* result = search_generic(elements,&key, 5, sizeof(int), compareInt);
-    ASSERT(7 == *result);
     ASSERT(&elements[2] == result);
 };
 void test_search_last_element_from_the_integer_array(){
     int elements[] = {1,2,3,4,5};
     int key = 5;
     int* result = search_generic(elements,&key, 5, sizeof(int), compareInt);
-    ASSERT(5 == *result);
     ASSERT(&elements[4] == result);
 };
 void test_search_element_from_the_float_array(){
     float elements[5] = {1.5f,2.5f,3.5f,4.5f,5.5f};
     float key = 2.5f;
     float* result = search_generic(elements,&key, 5, sizeof(float), compareInt);
-    ASSERT(2.5f == *result);
     ASSERT(&elements[1] == result);
 };
 void test_search_element_from_the_float_array_which_is_not_found(){
@@ -95,14 +87,12 @@ void test_search_element_from_the_double_array(){
     double elements[5] = {1.0,2.0,3.0,4.0,5.0};
     double key = 3.0;
     double* result = search_generic(elements,&key, 5, sizeof(double), compareDouble);
-    ASSERT(3.0 == *result);
     ASSERT(&elements[2] == result);
 };
 void test_search_element_from_the_String_array(){
     String elements[3] = {"aaa","bbb","ccc"};
     String key = "aaa";
     String* result = search_generic(elements,&key, 3, sizeof(String), compareString);
-    ASSERT(!(strcmp("aaa",*result)));
     ASSERT(&elements[0] == result);
 };
 void test_search_element_from_the_String_array_which_is_not_found(){

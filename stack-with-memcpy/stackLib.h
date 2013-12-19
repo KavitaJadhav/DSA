@@ -13,4 +13,4 @@ int push(Stack* stack,void* element);
 void* pop(Stack* stack);
 int isFull(Stack* stack);
 int isEmpty(Stack* stack);
-
+void* top(Stack* stack);

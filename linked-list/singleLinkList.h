@@ -1,5 +1,3 @@
-#include <stdbool.h>
-
 typedef char string[50];
 
 typedef struct Node{
@@ -13,5 +11,8 @@ typedef struct List{
 }List;
 
 List* createList();
-bool insertNode(List* list , int index , void* data);
-bool deleteNode(List* list , int index);
+int insertNode(List* list , int index , void* data);
+int deleteNode(List* list , int index);
+void* getElement(List* list , int index);
+typedef int (*Compare)(void* element1 , void* element2);
+int search(List* list , void* element , Compare compare);

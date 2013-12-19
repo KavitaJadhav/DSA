@@ -36,8 +36,19 @@ void test_isFull_return_true_if_stack_is_full(){
 	int elements[] = {5,6,7,8,9};
 	Stack* stack = create(sizeof(int),3);
 	push(stack , &elements[0]);
-	push(stack , &elements[0]);
-	push(stack , &elements[0]);
+	push(stack , &elements[1]);
+	push(stack , &elements[2]);
 	ASSERT(!push(stack , &elements[0]));
 }
-
+void test_top_return_top_element_of_stack(){
+	int elements[] = {5,6,7,8,9};
+	Stack* stack = create(sizeof(int),3);
+	push(stack , &elements[0]);
+	push(stack , &elements[1]);
+	push(stack , &elements[2]);
+	ASSERT(elements[2] == *(int*)top(stack));
+}
+void test_top_return_top_null_of_stack_if_stack_empty(){
+	Stack* stack = create(sizeof(int),3);
+	ASSERT(!top(stack));
+}

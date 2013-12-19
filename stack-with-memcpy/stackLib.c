@@ -22,11 +22,14 @@ void* pop(Stack* stack)
 {
 	void* element;
 	if(isEmpty(stack)) return 0;
-	element = stack->elements+(stack->elementSize*stack->top);
+	element = top(stack);
 	stack->top--;
 	return element;
 }
-
+void* top(Stack* stack){
+	if(-1 == stack->top) return NULL;
+	return stack->elements+(stack->elementSize*stack->top);
+}
 int isFull(Stack* stack)
 {
 	return (stack->top+1) == stack->no_of_elements ;

@@ -78,3 +78,26 @@ bool deleteNode(List* list , int index){
 	list->length--;
 	return true;
 }
+void* getElement(List* list , int index){
+	int i=0;
+	void* data;
+	Node* node;
+	if(index >= list->length) return NULL;
+	else{
+		node = list->header;
+		while(i++ < index) node = node->next ;
+	}
+	return node->data;
+}
+int search(List* list , void* element , Compare compare){
+	Node* node;
+	int index= 0;
+	if(0 == list->length) return -1;
+	node = list->header;
+	while(node->next != NULL){
+		if (!compare(element , node->data)) return index;
+		index++;
+		node = node->next;
+	}
+	return -1;
+}
