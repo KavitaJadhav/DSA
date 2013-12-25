@@ -40,6 +40,8 @@ void increaseCapacity(ArrayList *list) {
 }
 
 int insert(ArrayList *list, int index, void* data) {
+	if (list == NULL) return 0;
+	if (index < 0 || index > list->length) return 0;
 	increaseCapacity(list);
 	shiftElementsIfNeeded(list, index);
 	list->base[index] = data;
@@ -76,4 +78,23 @@ int search(ArrayList* list , void* element , Compare compare){
 
 void dispose(ArrayList *list) {
 	free(list->base);
+}
+
+int hasNextForArrayList(Iterator* it){
+    ArrayList *list = it->list;
+    if(list->length <= it->position) return 0;
+    return 1;
+}
+void* getNextDataForArrayList(Iterator* it){
+        ArrayList* list = it->list;
+    if(!hasNextForArrayList(it)) return NULL;
+    return list->base[it->position++];
+}
+Iterator getIterator(ArrayList* list){
+    Iterator it;
+    it.list = list;
+    it.position = 0;
+    it.hasNext = &hasNextForArrayList;
+    it.next = &getNextDataForArrayList;
+    return it;
 }

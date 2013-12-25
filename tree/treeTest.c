@@ -11,14 +11,14 @@ int areNumberSame(void* num1 ,void* num2){
 void test_insert_Data_At_Root_Node(){
 	int data = 10;
 	Tree* tree = createTree();
-	insertTreeNode(tree, &data, NULL);
+	insertTreeNode(tree, &data, NULL , areNumberSame);
 	ASSERT(!getParentData(tree , &data ,areNumberSame));
 }
 void test_insert_Data_As_child_of_Root_Node(){
 	int data[] = {10 , 20};
 	Tree* tree = createTree();
-	insertTreeNode(tree, &data[0], NULL);
-	insertTreeNode(tree, &data[1], NULL);
+	insertTreeNode(tree, &data[0], NULL,areNumberSame);
+	insertTreeNode(tree, &data[1], &data[0],areNumberSame);
 	printf("%d\n",*(int*)tree->root->node->data );
 	ASSERT(&data[0] == getParentData(tree , &data[1] , areNumberSame));
 }

@@ -15,29 +15,32 @@ TreeNode* createTreeNode(void *data){
 	tn->node->data = data;
 	tn->node->next = NULL;
 	tn->node->prev = NULL;
-	tn->child->header = NULL;
+	tn->child = NULL;
 	return tn;
 
 }
 
-void traverseToNode(Tree* tree ,TreeNode* tn ,void* parentData){
+void* traverseToNode(Tree* tree ,TreeNode* tn ,void* parentData ,Compare compare){
 	TreeNode* treeNode = tree->root;
 	while(treeNode->node->next != NULL)
 	{
 		if(treeNode->child){
 			treeNode = treeNode->child;
-			if (0 == compare(treeNode->node->data , data)) 
-				treeNode->child->header->data = data ;
-
+			if (0 == compare(treeNode->node->data ,parentData)) 
+				return treeNode;
 		}
-
 	}
+	return NULL;
 }
 
-int insertTreeNode(Tree *tree, void *data, void *parentData){
+int insertTreeNode(Tree *tree, void *data, void *parentData ,Compare compare){
 	TreeNode* tn = createTreeNode(data);
+	TreeNode* parentNode;
 	if(NULL == tree->root) tree->root = tn;
-	else traverseToNode(tree , tn ,parentData);
+	else{
+		parentNode = traverseToNode(tree , tn ,parentData , compare);
+		// parentNode->child->node->data = data;
+	}
 	return 1;
 }
 
