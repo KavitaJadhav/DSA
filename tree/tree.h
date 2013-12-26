@@ -1,15 +1,20 @@
-#include "../doubly-linked-list/doublyLinkList.h"
-typedef struct TreeNode{
-	Node* node; 
-	struct TreeNode* child;
-} TreeNode;
+typedef int (*Compare)(void* element1,void* element2);
 
 typedef struct Tree{
-	TreeNode* root;
+	void* root;
+	int (*Compare)(void* element1,void* element2);
 }Tree;
 
-int insertTreeNode(Tree* tree , void* data , void* parentData ,Compare compare);
-void* getParentData(Tree* tree , void* data , Compare compare);
-Tree* createTree();
+typedef struct TreeNode{
+	void* parent;
+	void* sibbling;
+	void* children;
+	void* data;
+}TreeNode;
 
-// typedef int (*Compare)(void* element1 , void* element2);
+Tree* createTree(Compare compare);
+TreeNode* createNode(void* data);
+int insertNode(Tree* tree,void* data,void* parentData);
+void* traverse(Tree* tree,void* parentData );
+void* getchildren(Tree* tree,void* parentData);
+int search(Tree* tree,void* data);
