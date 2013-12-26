@@ -40,3 +40,37 @@ int searchData(HashMap* map , void* key){
 	List* list = (List*)(map->buckets+(sizeof(List)*bucketNumber));
 	return search(list, key,map->compare);
 }
+void* get(HashMap *map, void *key){
+	Node* node;
+	Data* data;
+	int bucketNumber = map->hashFunc(key) % capasity;
+	List* list = (List*)(map->buckets+(sizeof(List)*bucketNumber));
+	if(0 == list->length) return NULL;
+	node = list->header;
+	do{
+		data = node->data;
+		if (!map->compare(key ,data->key)) return data;
+		node = node->next;
+	}while(node->next != NULL);
+	return NULL;
+}
+int getIndexInBucket(HashMap* map ,void* key ,List* list){
+	Data* data;
+	int index = 1 ;
+	Node* node = list->header;
+	do{
+		data = node->data;
+		if (!map->compare(key ,data->key)) return index;
+		node = node->next;
+		index++;
+	}while(node->next != NULL);
+	return index;
+}
+void* remove(HashMap *map, void *key){
+	void* data = get(map, key);
+	int index ,bucketNumber = map->hashFunc(key) % capasity;
+	List* list = (List*)(map->buckets+(sizeof(List)*bucketNumber));
+	index = getIndexInBucket( map ,key ,list);
+	deleteNode(list,index);
+	return data;
+}

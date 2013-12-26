@@ -53,9 +53,24 @@ int main(){
 		test_add_an_element_to_hashmap();
 	tearDown();
 	testEnded();
-	testStarted("test_add1_an_element_to_hashmap");
+	testStarted("test_add_an_element_to_hashmap1");
 	setup();
-		test_add1_an_element_to_hashmap();
+		test_add_an_element_to_hashmap1();
+	tearDown();
+	testEnded();
+	testStarted("test_add_an_element_to_hashmap2");
+	setup();
+		test_add_an_element_to_hashmap2();
+	tearDown();
+	testEnded();
+	testStarted("test_get_an_element_to_hashmap");
+	setup();
+		test_get_an_element_to_hashmap();
+	tearDown();
+	testEnded();
+	testStarted("test_remove_an_element_to_hashmap");
+	setup();
+		test_remove_an_element_to_hashmap();
 	tearDown();
 	testEnded();
 

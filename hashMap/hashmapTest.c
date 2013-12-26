@@ -4,7 +4,10 @@
 //create setup, tearDown, fixtureSetup, fixtureTearDown methods if needed
 
 int areKeyEqual(void* key1 , void* key2 ){
-        return *(int*)key1 - *(int*)key2;
+	return *(int*)key1 - *(int*)key2;
+}
+int areKeyEqual1(void* key1 , void* key2 ){
+	return *(string*)key1 - *(string*)key2;
 }
 int hashFun(void *key){
         return *(int*)key;
@@ -17,7 +20,13 @@ void test_add_an_element_to_hashmap(){
 	ASSERT(put(map, &key , &value));
 	ASSERT(searchData(map,&key));
 }
-void test_add1_an_element_to_hashmap(){
+void test_add_an_element_to_hashmap1(){
+	string key="intern" , value ="kavita";
+	HashMap* map = create(hashFun, areKeyEqual1);
+	ASSERT(put(map, &key , &value));
+	ASSERT(searchData(map,&key));
+}
+void test_add_an_element_to_hashmap2(){
 	int key1 = 10,key = 20;
 	char* value ="poonam";
 	HashMap* map = create(hashFun, areKeyEqual);
@@ -25,4 +34,24 @@ void test_add1_an_element_to_hashmap(){
 	ASSERT(put(map, &key , &value));
 	ASSERT(searchData(map,&key1));
 	ASSERT(searchData(map,&key));
+}
+void test_get_an_element_to_hashmap(){
+	Data* data;
+	string key="intern" , value ="kavita";
+	HashMap* map = create(hashFun, areKeyEqual1);
+	ASSERT(put(map, &key , &value));
+	data = get(map, &key);
+	ASSERT(&key == data->key);
+	ASSERT(&value == data->value);
+}
+void test_remove_an_element_to_hashmap(){
+	Data* data;
+	string key="intern" , value ="kavita";
+	HashMap* map = create(hashFun, areKeyEqual1);
+	ASSERT(put(map, &key , &value));
+	data =remove(map, &key);
+	ASSERT(&key == data->key);
+	ASSERT(&value == data->value);
+	ASSERT(-1 == searchData(map,&key));
+
 }
