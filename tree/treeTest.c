@@ -52,12 +52,21 @@ void test_insert_Data_At_child_Node(){
 		ASSERT(&data[5] == child->data );
 }
 
-// void test_search_child_node_in_tree(){
-// 	int data[] ={10,5,3};
-// 	Tree *tree = createTree(compareInts);
-// 	TreeNode *child;
-// 	ASSERT(insertNode(tree, &data[0], NULL));
-// 	ASSERT(insertNode(tree, &data[1],&data[0]));
-// 	ASSERT(insertNode(tree, &data[2],&data[0]));
-// 	ASSERT(search(tree, &data[2]));
-// }
+void test_search_root_node_in_tree(){
+	int data[] ={10,5,3};
+	Tree *tree = createTree(compareInts);
+	TreeNode *child;
+	ASSERT(insertNode(tree, &data[0], NULL));
+	ASSERT(search(tree, &data[0]));
+}
+void test_search_child_node_in_tree(){
+	int data[] ={10,5,3};
+	Tree *tree = createTree(compareInts);
+	TreeNode *child;
+	ASSERT(insertNode(tree, &data[0], NULL));
+	ASSERT(insertNode(tree, &data[1],&data[0]));
+	ASSERT(insertNode(tree, &data[2],&data[0]));
+	ASSERT(search(tree, &data[2]));
+}
+
+
