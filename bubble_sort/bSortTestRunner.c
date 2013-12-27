@@ -48,6 +48,11 @@ int main(){
 	fixtureSetup();
 	resetTestCount();
 
+	testStarted("test_sort_Int_array_having_1_element");
+	setup();
+		test_sort_Int_array_having_1_element();
+	tearDown();
+	testEnded();
 	testStarted("test_sort_Int_array");
 	setup();
 		test_sort_Int_array();

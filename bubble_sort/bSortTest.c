@@ -23,10 +23,17 @@ int compareString(void* a,void* b){
     return (strcmp(*(String*)a,*(String*)b));
 }
 
+void test_sort_Int_array_having_1_element(){
+    int data[] = {40};
+    int expected[] = {40};
+    bSort(data, 1, sizeof(int), compareIntegers);
+    ASSERT(0 == memcmp(expected, data, sizeof(expected)));
+}
+
 void test_sort_Int_array(){
     int data[] = {40,30,10,20,50};
     int expected[] = {10,20,30,40,50};
-    bSort(data, 4, sizeof(int), compareIntegers);
+    bSort(data, 5, sizeof(int), compareIntegers);
     ASSERT(0 == memcmp(expected, data, sizeof(expected)));
 }
 

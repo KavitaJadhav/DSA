@@ -13,6 +13,7 @@ void swapElement(void* element1 ,void* element2 ,int elementSize ,Compare compar
 void bSort(void* base, int noOfElements, int elementSize, Compare compare){
     int i, j;
     void *element1 , *element2;
+    if (noOfElements == 1) return;
     for (i = 0; i < noOfElements; i++) {
 		element1 = base + i * elementSize;
 		for (j = i+1; j < noOfElements; j++) {
