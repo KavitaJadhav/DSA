@@ -47,7 +47,7 @@ void* traverse(Tree* tree,void* parentData ){
 int insertNode(Tree* tree,void* data,void* parentData){
 	TreeNode* tn = createNode(data);
 	TreeNode* parentNode ,*child;
-	if(tree->root == NULL){
+	if(tree->root == NULL && parentData == NULL){
 		tree->root = tn;
 		tn->parent = tree->root;
 		return 1;
