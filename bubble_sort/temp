@@ -1,0 +1,6 @@
+int compareDouble( void* a,  void* b){
+    return (*(double*)a - *(double*)b);
+}
+int compareString(void* a,void* b){
+    return (strcmp(*(String*)a,*(String*)b));
+}
