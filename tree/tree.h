@@ -18,3 +18,4 @@ int insertNode(Tree* tree,void* data,void* parentData);
 void* traverse(Tree* tree,void* parentData );
 void* getchildren(Tree* tree,void* parentData);
 int search(Tree* tree,void* data);
+int removeNode(Tree* tree,void* data);

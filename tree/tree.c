@@ -32,7 +32,7 @@ void* traverseInside(Tree* tree , TreeNode* tn){
 	do{
 		tn = tn->parent;
 		if(hasSibbling(tn))  return tn->sibbling;
-	}while(!tn->sibbling || tn->parent != tree->root);
+	}while(!tn->sibbling && tn->parent != tree->root);
 	return NULL;
 }
 void* traverse(Tree* tree,void* parentData ){
@@ -40,6 +40,7 @@ void* traverse(Tree* tree,void* parentData ){
 	if(0 == tree->Compare(tn->data , parentData)) return tn;
 	do{
 		tn = traverseInside(tree , tn);
+		if(NULL == tn) return NULL;
 		if(0 == tree->Compare(tn->data , parentData)) return tn;
 	}while(tn != tree->root);
 	return tn;
@@ -47,11 +48,13 @@ void* traverse(Tree* tree,void* parentData ){
 int insertNode(Tree* tree,void* data,void* parentData){
 	TreeNode* tn = createNode(data);
 	TreeNode* parentNode ,*child;
-	if(tree->root == NULL && parentData == NULL){
+	if(tree->root == NULL ){
+		if(parentData != NULL) return 0;
 		tree->root = tn;
 		tn->parent = tree->root;
 		return 1;
 	}
+	if(parentData == NULL) return 0;
 	parentNode = traverse(tree,parentData);
 	if(parentNode == NULL) return 0;
 	if(parentNode->children == NULL) {
@@ -79,4 +82,17 @@ void* getchildren(Tree* tree,void* parentData){
 	if(parentNode == NULL) return NULL;
 	ch = parentNode->children;
 	return parentNode->children;
+}
+
+int removeNode(Tree* tree,void* data){
+	TreeNode* tn,*parent;
+	tn = traverse(tree, data);
+	if(NULL == tn) return 0;
+	if(!tn->children){
+		parent = tn->parent;
+		parent->children = tn->sibbling;
+		return 1;
+	}	
+	return 0;
+
 }
