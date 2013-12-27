@@ -54,11 +54,6 @@ int main(){
 		test_insert_Data_At_Root_Node();
 	tearDown();
 	testEnded();
-	testStarted("test_insert_Data_As_child_of_Root_Node");
-	setup();
-		test_insert_Data_As_child_of_Root_Node();
-	tearDown();
-	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();

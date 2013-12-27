@@ -4,7 +4,7 @@
 const int capasity = 10;
 HashMap* create(HashFunc hashFunc, CompareFunc compare){
 	HashMap* map = calloc(1, sizeof(HashMap));
-	map->buckets = calloc(1, sizeof(List) * capasity);
+	map->buckets = calloc(capasity, sizeof(List));
 	map->noOfBuckets = capasity;
 	map->hashFunc = hashFunc;
 	map->compare = compare;
@@ -23,11 +23,14 @@ Data* getData(void *key, void *value){
 	data->value = value;
 	return data;
 }
+List* getBucket(HashMap* map , int bucketNumber){
+	return (List*)(map->buckets+(sizeof(List)*bucketNumber));
+}
 int put(HashMap *map, void *key, void *value){
 	Data* data = getData(key, value);
 	Node* node = createNode(data);
     int bucketNumber = map->hashFunc(key) % capasity;
-	List* list = (List*)(map->buckets+(sizeof(List)*bucketNumber));
+    List* list = getBucket(map , bucketNumber);
 	return insertNode(list, list->length,data);
 }
 void dispose(HashMap *map){
@@ -37,14 +40,14 @@ void dispose(HashMap *map){
 
 int searchData(HashMap* map , void* key){
     int bucketNumber = map->hashFunc(key) % capasity;
-	List* list = (List*)(map->buckets+(sizeof(List)*bucketNumber));
+    List* list = getBucket(map , bucketNumber);
 	return search(list, key,map->compare);
 }
 void* get(HashMap *map, void *key){
 	Node* node;
 	Data* data;
 	int bucketNumber = map->hashFunc(key) % capasity;
-	List* list = (List*)(map->buckets+(sizeof(List)*bucketNumber));
+	List* list = getBucket(map , bucketNumber);
 	if(0 == list->length) return NULL;
 	node = list->header;
 	do{
@@ -66,10 +69,11 @@ int getIndexInBucket(HashMap* map ,void* key ,List* list){
 	}while(node->next != NULL);
 	return index;
 }
+
 void* remove(HashMap *map, void *key){
 	void* data = get(map, key);
 	int index ,bucketNumber = map->hashFunc(key) % capasity;
-	List* list = (List*)(map->buckets+(sizeof(List)*bucketNumber));
+	List* list = getBucket(map , bucketNumber);
 	index = getIndexInBucket( map ,key ,list);
 	deleteNode(list,index);
 	return data;
