@@ -1,3 +1,5 @@
+#include "iterator.h"
+
 typedef int (*Compare)(void* element1,void* element2);
 
 typedef struct Tree{

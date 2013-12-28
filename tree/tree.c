@@ -73,6 +73,7 @@ int insertNode(Tree* tree,void* data,void* parentData){
 int search(Tree* tree,void* data){
 	TreeNode* tn = createNode(data);
 	tn = traverse(tree,data);
+	if(NULL ==tn) return 0;
 	if(tn->data == data) return 1;
 	return 0;
 }
