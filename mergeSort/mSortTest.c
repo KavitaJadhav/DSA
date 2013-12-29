@@ -10,7 +10,9 @@ typedef char String[256];
 int compareInt (void* a,  void* b){
     return (*(int*)a < *(int*)b);
 }
-
+int compareDouble( void* a,  void* b){
+    return (*(double*)a < *(double*)b);
+}
 
 void test_sorting_integers_elements(){
     int i,length = 5;
@@ -21,4 +23,14 @@ void test_sorting_integers_elements(){
 
     for(i=0;i<length;i++)
         ASSERT(expected[i] == *(char*)base[i]);
+};
+void test_sorting_float_elements(){
+    float elements[] = {10.5f,1.5f,2.5f,7.5f};
+    float expected[] = {1.5f,2.5f,7.5f,10.5f};
+    int i;
+    void *base[4] = {&elements[0],&elements[1],&elements[2],&elements[3]};
+    msort(base,4,sizeof(float),compareInt);
+    
+    for(i=0;i<4;i++)
+        ASSERT(expected[i] == *(float*)base[i]);
 };
