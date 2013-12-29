@@ -14,6 +14,7 @@ int compareDouble( void* a,  void* b){
     return (*(double*)a < *(double*)b);
 }
 
+
 void test_sorting_integers_elements(){
     int i,length = 5;
     int elements[] = {40,50,30,20,10};
@@ -33,4 +34,15 @@ void test_sorting_float_elements(){
     
     for(i=0;i<4;i++)
         ASSERT(expected[i] == *(float*)base[i]);
+};
+
+void test_sorting_double_elements(){
+    double elements[] = {10.5050505050,1.5050505050,2.5050505050,7.5050505050};
+    double expected[] = {1.5050505050,2.5050505050,7.5050505050,10.5050505050};
+    int i;
+    void *base[4] = {&elements[0],&elements[1],&elements[2],&elements[3]};
+    msort(base,4,sizeof(double),compareDouble);
+    
+    for(i=0;i<4;i++)
+        ASSERT(expected[i] == *(double*)base[i]);        
 };
