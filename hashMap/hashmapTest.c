@@ -1,6 +1,6 @@
 #include "testUtils.h"
 #include "hashmap.h"
-
+#include <stdlib.h>
 //create setup, tearDown, fixtureSetup, fixtureTearDown methods if needed
 
 int areKeyEqual(void* key1 , void* key2 ){
@@ -44,14 +44,11 @@ void test_get_an_element_to_hashmap(){
 	ASSERT(&key == data->key);
 	ASSERT(&value == data->value);
 }
-void test_remove_an_element_to_hashmap(){
-	Data* data;
+void test_remove_an_element_from_hashmap(){
 	string key="intern" , value ="kavita";
 	HashMap* map = create(hashFun, areKeyEqual1);
 	ASSERT(put(map, &key , &value));
-	data =remove(map, &key);
-	ASSERT(&key == data->key);
-	ASSERT(&value == data->value);
+	ASSERT(remove(map, &key));
 	ASSERT(-1 == searchData(map,&key));
-
+	ASSERT(NULL == get(map , & key));
 }

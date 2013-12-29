@@ -4,8 +4,8 @@
 typedef struct iterator{
         int position;
         void* tree;
-        void* (*next)(struct iterator *it);
-        int (*hasNext)(struct iterator *it);
+        void* (*getSibling)(struct iterator *it);
+        int (*hasSibling)(struct iterator *it);
 } Iterator;
 
 #endif

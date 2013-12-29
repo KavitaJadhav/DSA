@@ -48,33 +48,30 @@ void* get(HashMap *map, void *key){
 	Data* data;
 	int bucketNumber = map->hashFunc(key) % capasity;
 	List* list = getBucket(map , bucketNumber);
-	if(0 == list->length) return NULL;
 	node = list->header;
-	do{
+	while(node != NULL){
 		data = node->data;
 		if (!map->compare(key ,data->key)) return data;
 		node = node->next;
-	}while(node->next != NULL);
+	};
 	return NULL;
 }
 int getIndexInBucket(HashMap* map ,void* key ,List* list){
 	Data* data;
-	int index = 1 ;
+	int index = 0 ;
 	Node* node = list->header;
-	do{
+	while(node != NULL){
 		data = node->data;
 		if (!map->compare(key ,data->key)) return index;
 		node = node->next;
 		index++;
-	}while(node->next != NULL);
-	return index;
+	};
+	return -1;
 }
 
-void* remove(HashMap *map, void *key){
-	void* data = get(map, key);
-	int index ,bucketNumber = map->hashFunc(key) % capasity;
+int remove(HashMap *map, void *key){
+	int bucketNumber = map->hashFunc(key) % capasity;
 	List* list = getBucket(map , bucketNumber);
-	index = getIndexInBucket( map ,key ,list);
-	deleteNode(list,index);
-	return data;
+	int index  = getIndexInBucket( map ,key ,list);
+	return deleteNode(list,index);
 }

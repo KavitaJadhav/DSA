@@ -68,9 +68,9 @@ int main(){
 		test_get_an_element_to_hashmap();
 	tearDown();
 	testEnded();
-	testStarted("test_remove_an_element_to_hashmap");
+	testStarted("test_remove_an_element_from_hashmap");
 	setup();
-		test_remove_an_element_to_hashmap();
+		test_remove_an_element_from_hashmap();
 	tearDown();
 	testEnded();
 
