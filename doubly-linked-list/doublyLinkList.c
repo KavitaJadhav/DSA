@@ -101,3 +101,30 @@ int search(List* list , void* element , Compare compare){
 	}
 	return -1;
 }
+
+int hasNext(Iterator* it){
+	List *list;
+	list = (List*)it->list;
+	if(it->position == list->length) return 0;
+	return 1;
+}
+void* next(Iterator *it){
+	List *list;
+	int i = 0;
+	Node* temp;
+	if(0 == hasNext(it)) return NULL;
+	list = (List*)it->list;
+	temp = list->header;
+	for(i = 0;i < it->position;i++)
+	        temp = temp->next;
+	it->position++;
+	return temp->data;
+}
+Iterator getIterator(List *list){
+        Iterator iterator;
+        iterator.position = 0;
+        iterator.list = list;
+        iterator.hasNext = &hasNext;
+        iterator.next = &next;
+        return iterator;
+}

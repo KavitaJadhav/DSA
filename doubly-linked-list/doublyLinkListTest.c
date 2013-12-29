@@ -160,3 +160,40 @@ void test_search_gives_minus_one_if_data_not_found(){
 
 	ASSERT(-1 == search(list, &element, compareIntData));
 }
+void test_hasnext_of_getiterator_gives_false_if_list_not_empty(){
+	List* list = createList();
+	Iterator it = getIterator(list);
+	ASSERT(0 == it.hasNext(&it));
+}
+void test_hasnext_of_getiterator_gives_true_if_list_not_empty(){
+	List* list = createList();
+	Iterator it;
+	int data[] = {100,200,300,400};
+	insertNode(list,0,&data[0]);
+	it = getIterator(list);
+	ASSERT(1 == it.hasNext(&it));
+}
+void test_next_of_getiterator_gives_next_data(){
+	List* list = createList();
+	Iterator it;
+	int data[] = {100,200,300,400};
+	insertNode(list,0,&data[0]);
+	it = getIterator(list);
+	if(it.hasNext(&it))
+	ASSERT(&data[0] == it.next(&it));
+}
+void test_should_give_all_values_using_iterator(){
+	List* list = createList();
+	Iterator it;
+	int i = 0;
+	int numbers[] = {5,10,15,20};
+	insertNode(list, 0, numbers);
+	insertNode(list, 1, &numbers[1]);
+	insertNode(list, 2, &numbers[2]);
+	insertNode(list, 3, &numbers[3]);
+	it = getIterator(list);
+	while(it.hasNext(&it)){                
+	        ASSERT(numbers[i] == *(int*)it.next(&it));
+	        i++;
+}
+}

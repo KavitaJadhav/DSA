@@ -129,6 +129,26 @@ int main(){
 		test_search_gives_minus_one_if_data_not_found();
 	tearDown();
 	testEnded();
+	testStarted("test_hasnext_of_getiterator_gives_false_if_list_not_empty");
+	setup();
+		test_hasnext_of_getiterator_gives_false_if_list_not_empty();
+	tearDown();
+	testEnded();
+	testStarted("test_hasnext_of_getiterator_gives_true_if_list_not_empty");
+	setup();
+		test_hasnext_of_getiterator_gives_true_if_list_not_empty();
+	tearDown();
+	testEnded();
+	testStarted("test_next_of_getiterator_gives_next_data");
+	setup();
+		test_next_of_getiterator_gives_next_data();
+	tearDown();
+	testEnded();
+	testStarted("test_should_give_all_values_using_iterator");
+	setup();
+		test_should_give_all_values_using_iterator();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
