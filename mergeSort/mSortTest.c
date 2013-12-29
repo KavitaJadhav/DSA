@@ -16,6 +16,9 @@ int compareDouble( void* a,  void* b){
 int compareChar( void* a,  void* b){
     return (*(char*)a < *(char*)b);
 }
+int compareString(void* a , void* b){
+    return strcmp(*(String*)a, *(String*)b) == 1;
+}
 
 void test_sorting_integers_elements(){
     int i,length = 5;
@@ -57,4 +60,13 @@ void test_sorting_character_elements(){
     
     for(i=0;i<4;i++)
         ASSERT(expected[i] == *(char*)base[i]);        
+}
+void test_sorting_string_elements(){
+    String elements[] = {"DDDD","CCCC","BBBB","AAAA",};
+    String expected[] = {"AAAA","BBBB","CCCC","DDDD"};
+    int i;
+    void *base[4] = {&elements[0],&elements[1],&elements[2],&elements[3]};
+    msort(base,4,sizeof(String),compareString);
+    for(i=0;i<4;i++)
+        ASSERT(0 == strcmp(expected[i] , *(String*)base[i]));        
 }
