@@ -13,7 +13,9 @@ int compareInt (void* a,  void* b){
 int compareDouble( void* a,  void* b){
     return (*(double*)a < *(double*)b);
 }
-
+int compareChar( void* a,  void* b){
+    return (*(char*)a < *(char*)b);
+}
 
 void test_sorting_integers_elements(){
     int i,length = 5;
@@ -46,3 +48,13 @@ void test_sorting_double_elements(){
     for(i=0;i<4;i++)
         ASSERT(expected[i] == *(double*)base[i]);        
 };
+void test_sorting_character_elements(){
+    char elements[] = {'d','c','b','a'};
+    char expected[] = {'a','b','c','d'};
+    int i;
+    void *base[4] = {&elements[0],&elements[1],&elements[2],&elements[3]};
+    msort(base,4,sizeof(char),compareChar);
+    
+    for(i=0;i<4;i++)
+        ASSERT(expected[i] == *(char*)base[i]);        
+}
