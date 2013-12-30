@@ -27,14 +27,14 @@ void test_add_an_element_to_hashmap1(){
 	ASSERT(searchByKey(map,&key));
 }
 void test_add_an_element_to_hashmap2(){
-	int key1 = 10,key = 20;
+	int key1 = 13,key = 23;
 	char* value ="poonam";
 	HashMap* map = create(hashFun, areKeyEqual);
 	ASSERT(put(map, &key1 , &value));
 	ASSERT(put(map, &key , &value));
 	ASSERT(searchByKey(map,&key1));
 	ASSERT(searchByKey(map,&key));
-}
+} 
 void test_get_an_element_to_hashmap(){
 	HashElement* hashElement;
 	string key="intern" , value ="kavita";
@@ -54,17 +54,17 @@ void test_remove_an_element_from_hashmap(){
 }
 void test_get_keys_in_hashmap(){
 	Iterator it;
-	int i ,key[] = {10 ,11,12,13,14,15,16, 17, 18, 19};
+	int i = 0 ,key[] = {10 ,11,12,13,14,15,16, 17, 18, 19};
 	char* values[] ={"AAA","BBB","CCC","DDD","EEE","FFF","HHH" , "III", "JJJ", "KKK"};
 	HashMap* map = create(hashFun, areKeyEqual);
 
-	for(i = 0 ; i < 4 ;i++ ){
-		printf("m here\n");
+	for(i = 0 ; i < 10 ;i++ )
 		ASSERT(put(map, &key[i] , &values[i]));
-	}
 
 	it = keys(map);
-
-	while(it.hasNext(&it))
-		printf("%d\n",*(int*)it.next(&it) );
+	i = 0;
+	while(it.hasNext(&it)){
+		ASSERT(& key[i] == it.next(&it));
+		i++;
+	}
 }

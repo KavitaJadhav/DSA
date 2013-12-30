@@ -16,6 +16,7 @@ void insertFirst(List* list , int index ,Node* node ){
 void insertLast(List* list , int index ,Node* node ){
 	Node* temp = calloc(1, sizeof(Node*));
 	temp = list->header;
+	if(temp ==NULL) return;
 	while(NULL!=temp->next)
 		temp =temp->next;
 	node->prev=temp;
@@ -94,6 +95,7 @@ int search(List* list , void* element , Compare compare){
 	int index= 0;
 	if(0 == list->length) return -1;
 	node = list->header;
+	if(node==NULL) return -1;
 	while(node->next != NULL){
 		if (!compare(element , node->data)) return index;
 		index++;
