@@ -73,6 +73,11 @@ int main(){
 		test_remove_an_element_from_hashmap();
 	tearDown();
 	testEnded();
+	testStarted("test_get_keys_in_hashmap");
+	setup();
+		test_get_keys_in_hashmap();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
