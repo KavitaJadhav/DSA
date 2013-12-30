@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void* (*listNext)(struct iterator *it);
+
 Tree* createTree(CompareFunc compare){
 	Tree* tree = calloc(1, sizeof(Tree));
 	tree->compare = compare;
@@ -19,9 +21,11 @@ int hasChild(TreeNode* treenode){
 	if(NULL == treenode->children) return 0;
 	return 1;
 };
-void* traverseInside(Tree* tree , TreeNode* tn ,Iterator it){
-	if(hasChild(tn)) return tn->children;
-	if(it.hasNext(&it)) return it.next(&it);
+void* traverseInside(Tree* tree , TreeNode* tn){
+	Iterator it;
+	if(hasChild(tn)) return tn->children->header;
+	it = getIterator(tn->parent->children );
+	if(it.hasNext(&it)) return nextdata(&it);
 	do{
 		tn = tn->parent;
 		if(it.hasNext(&it))  return it.next(&it);
@@ -30,11 +34,11 @@ void* traverseInside(Tree* tree , TreeNode* tn ,Iterator it){
 };
 void* traverse(Tree* tree,void* parentData){
 	TreeNode* tn = tree->root;
-	Iterator it;
+	Node* node;
 	if(0 == tree->compare(tn->data , parentData)) return tn;
+	if(tn->children ==NULL) return NULL;
 	do{
-		it  = getIterator(tn->children);
-		tn = traverseInside(tree , tn,it);
+		tn = traverseInside(tree , tn);
 		if(NULL == tn) return NULL;
 		if(0 == tree->compare(tn->data , parentData)) return tn;
 	}while(tn != tree->root);
@@ -44,7 +48,7 @@ int insertToTree(Tree* tree, void* data, void* parentData){
 	TreeNode* tn = createTreeNode(data);
 	TreeNode* parentNode;
 	List* childList;
-	if(tree->root == NULL){
+	if(tree->root == NULL ){
 		if(parentData != NULL) return 0;
 		tree->root = tn;
 		return 1;
@@ -53,10 +57,9 @@ int insertToTree(Tree* tree, void* data, void* parentData){
 	parentNode = traverse(tree,parentData);
 	if(parentNode == NULL) return 0;
 	if(parentNode->children == NULL) {
-		childList = createList();
+		parentNode->children = (List*)createList();
 		tn->parent = parentNode;
-		parentNode->children = childList;
-		insertNode(childList, 0, tn);
+		insertNode(parentNode->children, 0, tn);
 	}
 	else{
 		childList = parentNode->children;
@@ -72,12 +75,17 @@ int searchInTree(Tree* tree, void* data){
 	if(tn->data == data) return 1;
 	return 0;
 };
+void* nextdata(Iterator* it){
+	TreeNode* node=listNext(it);
+	return node->data;
+}
 Iterator getChildren(Tree* tree,void* parentData){
 	List* children;
 	Iterator it;
 	TreeNode* parentNode = traverse(tree,parentData);
-	// if(parentNode == NULL) return NULL;
-	children = parentNode->children;
+	children = (List*)parentNode->children;
 	it = getIterator(children);
+	listNext = it.next;
+	it.next= &nextdata;
 	return it;
 };

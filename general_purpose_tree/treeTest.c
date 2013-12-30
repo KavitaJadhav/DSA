@@ -34,19 +34,18 @@ void test_insert_Data_As_child_to_root_Node(){
 	insertToTree(tree, &data[0], NULL);
 	insertToTree(tree, &data[1],&data[0]);
 	insertToTree(tree, &data[2],&data[0]);
-
 	it = getChildren(tree, &data[0]);
-	// ASSERT(&data[1] == it.next(&it));
-	// ASSERT(&data[2] == it.next(&it));
+	ASSERT(&data[1] == it.next(&it));
+	ASSERT(&data[2] == it.next(&it));
 }
-void test_insert_Data_As_desendent_to_root_Node(){
-	int data[] ={10,5,3,7,1,20}; 
-	Tree *tree = createTree(compareInts);
-	Iterator  it;
-	insertToTree(tree, &data[0], NULL);
-	insertToTree(tree, &data[1],&data[0]);
-	insertToTree(tree, &data[2],&data[1]);
+// void test_insert_Data_As_desendent_to_root_Node(){
+// 	int data[] ={10,5,3,7,1,20}; 
+// 	Tree *tree = createTree(compareInts);
+// 	Iterator  it;
+// 	insertToTree(tree, &data[0], NULL);
+// 	insertToTree(tree, &data[1],&data[0]);
+// 	insertToTree(tree, &data[2],&data[1]);
 	
-	it = getChildren(tree,&data[1]);
-	// ASSERT(&data[2] == it.next(&it));
-}
+// 	// it = getChildren(tree,&data[1]);
+// 	// ASSERT(&data[1] == it.next(&it));
+// }

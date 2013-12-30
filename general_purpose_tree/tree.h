@@ -11,6 +11,7 @@ typedef struct TreeNode{
         struct TreeNode* parent;
         List* children;
 } TreeNode;
+void* nextdata(Iterator* it);
 
 Tree* createTree(CompareFunc cmp);
 int insertToTree(Tree* tree, void* data, void* parentData);
