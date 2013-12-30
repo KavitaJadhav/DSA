@@ -21,10 +21,12 @@ int hasChild(TreeNode* treenode){
 	if(NULL == treenode->children) return 0;
 	return 1;
 };
-void* traverseInside(Tree* tree , TreeNode* tn){
-	Iterator it;
+int hasnextChild(TreeNode* treenode){
+	if(treenode) return 0;
+	return 1;
+};
+void* traverseInside(Tree* tree , TreeNode* tn ,Iterator it){
 	if(hasChild(tn)) return tn->children->header;
-	it = getIterator(tn->parent->children );
 	if(it.hasNext(&it)) return nextdata(&it);
 	do{
 		tn = tn->parent;
@@ -35,15 +37,18 @@ void* traverseInside(Tree* tree , TreeNode* tn){
 void* traverse(Tree* tree,void* parentData){
 	TreeNode* tn = tree->root;
 	Node* node;
+	Iterator it;
 	if(0 == tree->compare(tn->data , parentData)) return tn;
 	if(tn->children ==NULL) return NULL;
 	do{
-		tn = traverseInside(tree , tn);
+		it  = getIterator(tn->children);
+		tn = traverseInside(tree ,tn ,it);
 		if(NULL == tn) return NULL;
 		if(0 == tree->compare(tn->data , parentData)) return tn;
 	}while(tn != tree->root);
 	return tn;
 };
+
 int insertToTree(Tree* tree, void* data, void* parentData){
 	TreeNode* tn = createTreeNode(data);
 	TreeNode* parentNode;

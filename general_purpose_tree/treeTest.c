@@ -31,9 +31,14 @@ void test_insert_Data_As_child_to_root_Node(){
 	Tree *tree = createTree(compareInts);
 	Iterator it;
 
-	insertToTree(tree, &data[0], NULL);
-	insertToTree(tree, &data[1],&data[0]);
-	insertToTree(tree, &data[2],&data[0]);
+	// insertToTree(tree, &data[0], NULL);
+	// insertToTree(tree, &data[1],&data[0]);
+	// insertToTree(tree, &data[2],&data[0]);
+	
+	ASSERT(insertToTree(tree, &data[0], NULL));
+	ASSERT(insertToTree(tree, &data[1],&data[0]));
+	ASSERT(insertToTree(tree, &data[2],&data[0]));
+	
 	it = getChildren(tree, &data[0]);
 	ASSERT(&data[1] == it.next(&it));
 	ASSERT(&data[2] == it.next(&it));
@@ -48,4 +53,56 @@ void test_insert_Data_As_child_to_root_Node(){
 	
 // 	// it = getChildren(tree,&data[1]);
 // 	// ASSERT(&data[1] == it.next(&it));
+// }
+void test_search_root_node_in_tree(){
+	int data[] ={10,5,3};
+	Tree *tree = createTree(compareInts);
+	TreeNode *child;
+	ASSERT(insertToTree(tree, &data[0], NULL));
+	ASSERT(searchInTree(tree, &data[0]));
+}
+void test_search_child_node_in_tree(){
+	int data[] ={10,5,3};
+	Tree *tree = createTree(compareInts);
+	TreeNode *child;
+
+	ASSERT(insertToTree(tree, &data[0], NULL));
+	ASSERT(insertToTree(tree, &data[1],&data[0]));
+	ASSERT(insertToTree(tree, &data[2],&data[0]));
+	
+	// ASSERT(searchInTree(tree, &data[1]));
+}
+
+// void test_remove_root_node_in_tree(){
+// 	int data = 10;
+// 	Tree *tree = createTree(compareInts);
+// 	TreeNode *child;
+// 	ASSERT(insertToTree(tree, &data, NULL));
+// 	ASSERT(removeNode(tree, &data));
+// }
+
+// void test_remove_child_node_in_tree(){
+// 	int data[] ={10,5,3};
+// 	Tree *tree = createTree(compareInts);
+// 	ASSERT(insertToTree(tree, &data[0], NULL));
+// 	ASSERT(insertToTree(tree, &data[1],&data[0]));
+// 	ASSERT(removeNode(tree, &data[1]));
+// 	ASSERT(fail == searchInTree(tree, &data[1]));
+// }
+// void test_remove_second_child_node_in_tree(){
+// 	int data[] ={10,5,3};
+// 	Tree *tree = createTree(compareInts);
+// 	TreeNode *child;
+// 	ASSERT(insertToTree(tree, &data[0], NULL));
+// 	ASSERT(insertToTree(tree, &data[1],&data[0]));
+// 	ASSERT(insertToTree(tree, &data[2],&data[0]));
+// 	ASSERT(removeNode(tree, &data[2]));
+// 	ASSERT(fail == searchInTree(tree, &data[2]));
+// }
+// void test_should_not_remove_node_that_not_exist(){
+// 	int data[] ={10,20,30,40};
+// 	Tree *tree = createTree(compareInts);
+// 	ASSERT(insertToTree(tree, &data[0], NULL));
+// 	ASSERT(insertToTree(tree, &data[1],&data[0]));
+// 	ASSERT(fail == removeNode(tree, &data[2]));
 // }

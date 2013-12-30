@@ -69,6 +69,16 @@ int main(){
 		test_insert_Data_As_child_to_root_Node();
 	tearDown();
 	testEnded();
+	testStarted("test_search_root_node_in_tree");
+	setup();
+		test_search_root_node_in_tree();
+	tearDown();
+	testEnded();
+	testStarted("test_search_child_node_in_tree");
+	setup();
+		test_search_child_node_in_tree();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
