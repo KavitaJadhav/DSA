@@ -1,13 +1,25 @@
 #include "hashmap.h"
 #include <stdlib.h>
 
-const int capasity = 10;
+const int capacity = 10;
+
+
+void print(HashMap* map){
+	int i ;
+	for (i= 0; i < 10; ++i){
+		printf("%p\n", (List*)(map->buckets+(sizeof(List)*i)));
+	}
+}
+
 HashMap* create(HashFunc hashFunc, CompareFunc compare){
+	int i;
 	HashMap* map = calloc(1, sizeof(HashMap));
-	map->buckets = calloc(capasity, sizeof(List));
-	map->noOfBuckets = capasity;
+	map->buckets = calloc(capacity, sizeof(List));
+	map->noOfBuckets = capacity;
 	map->hashFunc = hashFunc;
 	map->compare = compare;
+
+	print(map);
 	return map;
 }
 Node* createNode(void* hashElement){
@@ -27,9 +39,9 @@ List* getBucket(HashMap* map , int bucketNumber){
 	return (List*)(map->buckets+(sizeof(List)*bucketNumber));
 }
 int put(HashMap *map, void *key, void *value){
-	HashElement * hashElement = gethashElement(key, value);
+	HashElement* hashElement = gethashElement(key, value);
 	Node* node = createNode(hashElement);
-    int bucketNumber = map->hashFunc(key) % capasity;
+    int bucketNumber = map->hashFunc(key , capacity) ;    
     List* list = getBucket(map , bucketNumber);
 	return insertNode(list, list->length,hashElement);
 }
@@ -39,14 +51,15 @@ void dispose(HashMap *map){
 }
 
 int searchByKey(HashMap* map , void* key){
-    int bucketNumber = map->hashFunc(key) % capasity;
+    int bucketNumber = map->hashFunc(key , capacity) ;
     List* list = getBucket(map , bucketNumber);
 	return search(list, key,map->compare);
 }
+
 void* get(HashMap *map, void *key){
 	Node* node;
 	HashElement* hashElement;
-	int bucketNumber = map->hashFunc(key) % capasity;
+	int bucketNumber = map->hashFunc(key , capacity) ;
 	List* list = getBucket(map , bucketNumber);
 	node = list->header;
 	while(node != NULL){
@@ -69,7 +82,7 @@ int getIndexInBucket(HashMap* map ,void* key ,List* list){
 	return -1;
 }
 int remove(HashMap *map, void *key){
-	int bucketNumber = map->hashFunc(key) % capasity;
+	int bucketNumber = map->hashFunc(key , capacity) ;
 	List* list = getBucket(map , bucketNumber);
 	int index  = getIndexInBucket( map ,key ,list);
 	return deleteNode(list,index);
@@ -80,17 +93,14 @@ Iterator keys(HashMap *map){
 	HashElement* hashElement;
 	Iterator it;
 	int i;
-	for(i = 0 ; i < capasity ; i++){
+	for(i = 0 ; i < capacity ; i++){
 		bucket =  (List*)(map->buckets+(sizeof(List)*i));
 		it = getIterator(bucket);
-		
 		while(it.hasNext(&it)){
 			hashElement = (HashElement*) it.next(&it);
-			printf("%d %d %d\n",list->length,it.position,*(int*)hashElement->key);
 			insertNode(list, list->length, hashElement);
 		}
 	}
 	it = getIterator(list);
 	return it;
 }
-

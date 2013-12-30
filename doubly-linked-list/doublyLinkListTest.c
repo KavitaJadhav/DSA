@@ -197,6 +197,22 @@ void test_should_give_all_values_using_iterator(){
 	while(it.hasNext(&it)){                
 	        ASSERT(numbers[i] == *(int*)it.next(&it));
 	        i++;
+	}
 }
-printf("%d\n",i );
+void test_testing_hasNext(){
+	List* list = createList();
+	Iterator it;
+	int i = 0;
+	int numbers[] = {5,10,15,20,30,40};
+	insertNode(list, 0, numbers);
+	insertNode(list, 1, &numbers[1]);
+	insertNode(list, 2, &numbers[2]);
+	insertNode(list, 3, &numbers[3]);
+	insertNode(list, 4, &numbers[4]);
+	insertNode(list, 5, &numbers[5]);
+	it = getIterator(list);
+	while(it.hasNext(&it)){                
+	        ASSERT(numbers[i] == *(int*)it.next(&it));
+	        i++;
+}
 }

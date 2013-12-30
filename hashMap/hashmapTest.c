@@ -9,12 +9,12 @@ int areKeyEqual(void* key1 , void* key2 ){
 int areKeyEqual1(void* key1 , void* key2 ){
 	return *(string*)key1 - *(string*)key2;
 }
-int hashFun(void *key){
-        return *(int*)key;
+int hashFun(void *key , int capacity){
+        return *(int*)key % capacity;
 };
 
 void test_add_an_element_to_hashmap(){
-	int key = 10;
+	int key = 16;
 	char* value ="kavita";
 	HashMap* map = create(hashFun, areKeyEqual);
 	ASSERT(put(map, &key , &value));
@@ -54,13 +54,15 @@ void test_remove_an_element_from_hashmap(){
 }
 void test_get_keys_in_hashmap(){
 	Iterator it;
-	int i ,key[] = {10 ,20,30,11,21,22};
-	char* values[] ={"AAA","BBB","CCC","DDD","EEE","FFF"};
+	int i ,key[] = {10 ,11,12,13,14,15,16, 17, 18, 19};
+	char* values[] ={"AAA","BBB","CCC","DDD","EEE","FFF","HHH" , "III", "JJJ", "KKK"};
 	HashMap* map = create(hashFun, areKeyEqual);
-	
-	for(i = 0 ; i <= 5 ;i++ ){
+
+	for(i = 0 ; i < 4 ;i++ ){
+		printf("m here\n");
 		ASSERT(put(map, &key[i] , &values[i]));
 	}
+
 	it = keys(map);
 
 	while(it.hasNext(&it))

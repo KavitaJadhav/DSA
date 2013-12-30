@@ -1,7 +1,7 @@
 #include "../doubly-linked-list/doublyLinkList.h"
 
 typedef int (*CompareFunc)(void* element1,void* element2);
-typedef int (*HashFunc)(void* key);
+typedef int (*HashFunc)(void* key , int capacity);
 
 typedef struct HashMap{
 	void** buckets;

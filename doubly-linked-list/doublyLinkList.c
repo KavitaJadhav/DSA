@@ -104,7 +104,7 @@ int search(List* list , void* element , Compare compare){
 
 int hasNext(Iterator* it){
 	List* list = (List*)it->list;
-	if(it->position == list->length) return 0;
+	if(it->position >= list->length) return 0;
 	return 1;
 }
 void* next(Iterator *it){
