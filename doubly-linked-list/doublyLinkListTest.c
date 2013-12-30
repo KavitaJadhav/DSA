@@ -203,7 +203,7 @@ void test_testing_hasNext(){
 	List* list = createList();
 	Iterator it;
 	int i = 0;
-	int numbers[] = {5,10,15,20,30,40};
+	int numbers[] = {10,20,30,40,40,50};
 	insertNode(list, 0, numbers);
 	insertNode(list, 1, &numbers[1]);
 	insertNode(list, 2, &numbers[2]);

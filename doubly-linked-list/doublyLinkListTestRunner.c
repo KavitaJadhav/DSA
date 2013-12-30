@@ -149,6 +149,11 @@ int main(){
 		test_should_give_all_values_using_iterator();
 	tearDown();
 	testEnded();
+	testStarted("test_testing_hasNext");
+	setup();
+		test_testing_hasNext();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
