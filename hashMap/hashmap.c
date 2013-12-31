@@ -30,10 +30,6 @@ int put(HashMap *map, void *key, void *value){
     if(list->length > 2) rehash(map);
 	return insertNode(list, list->length,gethashElement(key, value));
 }
-void dispose(HashMap *map){
-	free(map->buckets);
-	free(map);
-}
 int searchByKey(HashMap* map , void* key){
     int bucketNumber = map->hashFunc(key , capacity) ;
     List* list = getBucket(map , bucketNumber);
@@ -47,7 +43,7 @@ void* get(HashMap *map, void *key){
 	Node* node = list->header;
 	while(node != NULL){
 		hashElement = node->data;
-		if (!map->compare(key ,hashElement->key)) return hashElement;
+		if (!map->compare(key ,hashElement->key)) return hashElement->value;
 		node = node->next;
 	};
 	return NULL;
@@ -119,3 +115,12 @@ void rehash(HashMap *map){
 	}
 	capacity =newCapacity;
 }
+void dispose(HashMap* map){
+	List* Bucket;
+	int count;
+	for(count = map->noOfBuckets ;count > 0 ; count--){
+		Bucket =getBucket(map, count);
+		if (Bucket == NULL) continue;
+		if(Bucket->header!= NULL)  disposeList(Bucket);
+	}
+};

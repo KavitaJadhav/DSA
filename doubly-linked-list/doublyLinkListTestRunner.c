@@ -160,10 +160,6 @@ int main(){
 	return 0;
 }
 
-void setup(){}
-
-void tearDown(){}
-
 void fixtureSetup(){}
 
 void fixtureTearDown(){}

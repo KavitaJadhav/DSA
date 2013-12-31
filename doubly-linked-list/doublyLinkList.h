@@ -21,6 +21,7 @@ bool deleteNode(List* list , int index);
 void* getElement(List* list , int index);
 typedef int (*Compare)(void* element1 , void* element2);
 int search(List* list , void* element , Compare compare);
+void disposeList(List* list);
 
 Iterator getIterator(List *list);
 void* next(Iterator *it);
