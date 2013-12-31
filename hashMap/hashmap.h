@@ -21,5 +21,5 @@ void* get(HashMap *map, void *key);
 int remove(HashMap *map, void *key);
 int searchByKey(HashMap* map , void* key);
 Iterator keys(HashMap *map);
-void dispose(HashMap *map);
+void disposeMap(HashMap *map);
 void rehash(HashMap *map);

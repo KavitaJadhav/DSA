@@ -19,7 +19,7 @@ void setup(){
 	map = create(hashFun, areNumberEqual);
 }
 void tearDown(){
-	dispose(map);
+	disposeMap(map);
 }
 void test_add_an_element_to_hashmap(){
 	int key = 16;
@@ -32,7 +32,7 @@ void test_add_an_element_to_hashmap1(){
 	HashMap* map = create(hashFun, areStringEqual);
 	ASSERT(put(map, &key , &value));
 	ASSERT(searchByKey(map,&key));
-	dispose(map);
+	disposeMap(map);
 }
 void test_add_an_element_to_hashmap2(){
 	int key1 = 13,key = 23;
@@ -47,7 +47,7 @@ void test_get_an_element_to_hashmap(){
 	HashMap* map = create(hashFun, areStringEqual);
 	ASSERT(put(map, &key , &value));
 	ASSERT(&value == get(map, &key));
-	dispose(map);
+	disposeMap(map);
 }
 void test_remove_an_element_from_hashmap(){
 	string key="intern" , value ="kavita";
@@ -56,7 +56,7 @@ void test_remove_an_element_from_hashmap(){
 	ASSERT(remove(map, &key));
 	ASSERT(-1 == searchByKey(map,&key));
 	ASSERT(NULL == get(map , & key));
-	dispose(map);
+	disposeMap(map);
 }
 void test_get_keys_in_hashmap(){
 	Iterator it;

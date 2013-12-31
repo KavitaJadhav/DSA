@@ -115,7 +115,7 @@ void rehash(HashMap *map){
 	}
 	capacity =newCapacity;
 }
-void dispose(HashMap* map){
+void disposeMap(HashMap* map){
 	List* Bucket;
 	int count;
 	for(count = map->noOfBuckets ;count > 0 ; count--){
