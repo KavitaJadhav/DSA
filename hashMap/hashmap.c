@@ -1,7 +1,7 @@
 #include "hashmap.h"
 #include <stdlib.h>
 
-const int capacity = 10;
+int capacity = 10;
 
 HashMap* create(HashFunc hashFunc, CompareFunc compare){
 	int i;
@@ -89,5 +89,32 @@ Iterator keys(HashMap *map){
 	it = getIterator(list);
 	return it;
 }
-
-
+void reallocate(HashMap* map , int newCapacity){
+	int i;
+	map->buckets = realloc(map->buckets , newCapacity*sizeof(List));
+	for(i = capacity ; i < newCapacity ; i++)  map->buckets[i] = createList();
+	map->noOfBuckets = newCapacity;
+};
+void moveToNewBucket( HashMap* map ,List* bucket){
+	Iterator it;
+	HashElement* hashElement;
+	
+	if(bucket->header != NULL){
+		it = getIterator(bucket);
+		while(it.hasNext(&it)){
+			hashElement = (HashElement*) it.next(&it);
+			remove(map, hashElement->key);
+			put(map, hashElement->key, hashElement->value);
+		}
+	}
+}
+void rehash(HashMap *map){
+	List* bucket;
+	int i , newCapacity = capacity * 2;
+	reallocate(map ,newCapacity);
+	for(i = newCapacity - 1 ; i >= 0 ; i--) {
+		bucket = (List*)map->buckets[i];
+		moveToNewBucket(map , bucket);
+	}
+	capacity =newCapacity;
+}

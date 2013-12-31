@@ -72,7 +72,7 @@ void deleteMiddle(List* list , int index){
 	free(temp);
 }
 bool deleteNode(List* list , int index){
-	if(index >= list->length) return false;
+	if(index >= list->length || index < 0) return false;
 	if(index == 0) deleteFirst(list);
 	else if(index == list->length-1)  deleteLast(list);
 	else deleteMiddle( list , index);

@@ -78,6 +78,11 @@ int main(){
 		test_get_keys_in_hashmap();
 	tearDown();
 	testEnded();
+	testStarted("test_rehash_keys_in_hashmap");
+	setup();
+		test_rehash_keys_in_hashmap();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
