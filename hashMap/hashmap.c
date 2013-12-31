@@ -90,24 +90,4 @@ Iterator keys(HashMap *map){
 	return it;
 }
 
-void rehash(HashMap *map){
-	List* list = createList();
-	List* bucket;
-	HashElement* hashElement;
-	Iterator it;
-	int i;
-	for(i = 0 ; i < capacity ; i++){
-		bucket = (List*)map->buckets[i];
-		if(bucket->header != NULL){
-			it = getIterator(bucket);
-			while(it.hasNext(&it)){
-				hashElement = (HashElement*) it.next(&it);
-				insertNode(list, list->length, hashElement->key);
-			}
-		}
-	}
-	// it = getIterator(list);
-	// return it;
-}
-
 
