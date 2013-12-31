@@ -78,9 +78,9 @@ int main(){
 		test_get_keys_in_hashmap();
 	tearDown();
 	testEnded();
-	testStarted("test_rehash_keys_in_hashmap");
+	testStarted("test_rehash_keys_in_hashmap_in_insert");
 	setup();
-		test_rehash_keys_in_hashmap();
+		test_rehash_keys_in_hashmap_in_insert();
 	tearDown();
 	testEnded();
 

@@ -68,12 +68,11 @@ void test_get_keys_in_hashmap(){
 		i++;
 	}
 }
-
-void test_rehash_keys_in_hashmap(){
+void test_rehash_keys_in_hashmap_in_insert(){
 	Iterator it;
 	int i = 0 ,key[] = {10 ,20,30,40};
 	char* values[] ={"AAA","BBB","CCC","DDD"};
-	int afterRehashing[] ={20,40,30,10};
+	int afterRehashing[] ={20,10,30,40};
 	HashMap* map = create(hashFun, areKeyEqual);
 
 	for(i = 0 ; i < 4 ;i++ )
@@ -82,15 +81,7 @@ void test_rehash_keys_in_hashmap(){
 	it = keys(map);
 	i = 0;
 	while(it.hasNext(&it)){
-		ASSERT(&key[i] == it.next(&it));
-		i++;
-	}
-	rehash(map);
-
-	it = keys(map);
-	i = 0;
-	while(it.hasNext(&it)){
 		ASSERT(afterRehashing[i] == *(int*)it.next(&it)); // assering for value not for address
-		i++;												// &afterRehashing[i] == it.next(&it)
+		i++;
 	}
 }

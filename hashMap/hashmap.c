@@ -27,6 +27,7 @@ List* getBucket(HashMap* map , int bucketNumber){
 int put(HashMap *map, void *key, void *value){
     int bucketNumber = map->hashFunc(key , capacity) ;    
     List* list = getBucket(map , bucketNumber);
+    if(list->length > 2) rehash(map);
 	return insertNode(list, list->length,gethashElement(key, value));
 }
 void dispose(HashMap *map){
