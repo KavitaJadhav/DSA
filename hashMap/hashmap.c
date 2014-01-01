@@ -36,18 +36,19 @@ int searchByKey(HashMap* map , void* key){
 	return search(list, key,map->compare);
 }
 
-void* get(HashMap *map, void *key){
-	int bucketNumber = map->hashFunc(key , capacity) ;
-	List* list = getBucket(map , bucketNumber);
-	HashElement* hashElement;
-	Node* node = list->header;
-	while(node != NULL){
-		hashElement = node->data;
-		if (!map->compare(key ,hashElement->key)) return hashElement->value;
-		node = node->next;
-	};
-	return NULL;
-}
+// void* get(HashMap *map, void *key){
+// 	int bucketNumber = map->hashFunc(key , capacity) ;
+// 	List* list = getBucket(map , bucketNumber);
+// 	HashElement* hashElement;
+// 	Node* node = list->header;
+// 	while(node != NULL){
+// 		hashElement = node->data;
+// 		if (!map->compare(key ,hashElement->key)) return hashElement->value;
+// 		node = node->next;
+// 	};
+// 	return NULL;
+// }
+
 int getIndexInBucket(HashMap* map ,void* key ,List* list){
 	HashElement* hashElement;
 	int index = 0 ;
@@ -59,6 +60,15 @@ int getIndexInBucket(HashMap* map ,void* key ,List* list){
 		index++;
 	};
 	return -1;
+}
+void* get(HashMap *map, void *key){
+	int bucketNumber = map->hashFunc(key , capacity) ;
+	List* list = getBucket(map , bucketNumber);
+	int index = getIndexInBucket(map, key, list);
+	HashElement* hashElement;
+	if (-1 == index) return NULL;
+	hashElement = getElement(list, index);
+	return hashElement->value;
 }
 int remove(HashMap *map, void *key){
 	int bucketNumber = map->hashFunc(key , capacity) ;

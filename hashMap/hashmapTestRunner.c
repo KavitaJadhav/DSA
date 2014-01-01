@@ -68,6 +68,11 @@ int main(){
 		test_get_an_element_to_hashmap();
 	tearDown();
 	testEnded();
+	testStarted("test_get_should_give_NULL_if_key_not_found");
+	setup();
+		test_get_should_give_NULL_if_key_not_found();
+	tearDown();
+	testEnded();
 	testStarted("test_remove_an_element_from_hashmap");
 	setup();
 		test_remove_an_element_from_hashmap();
