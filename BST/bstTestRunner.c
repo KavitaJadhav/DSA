@@ -84,9 +84,9 @@ int main(){
 		test_must_delete_root_data();
 	tearDown();
 	testEnded();
-	testStarted("test_shod_not_delete_data_that_not_exist");
+	testStarted("test_must_not_delete_data_that_not_exist");
 	setup();
-		test_shod_not_delete_data_that_not_exist();
+		test_must_not_delete_data_that_not_exist();
 	tearDown();
 	testEnded();
 	testStarted("test_deletion_of_left_leaf_node");
@@ -97,6 +97,16 @@ int main(){
 	testStarted("test_deletion_of_right_leaf_node");
 	setup();
 		test_deletion_of_right_leaf_node();
+	tearDown();
+	testEnded();
+	testStarted("test_deletion_of_right_middle_node");
+	setup();
+		test_deletion_of_right_middle_node();
+	tearDown();
+	testEnded();
+	testStarted("test_deletion_of_left_middle_node");
+	setup();
+		test_deletion_of_left_middle_node();
 	tearDown();
 	testEnded();
 

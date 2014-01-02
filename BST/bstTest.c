@@ -72,7 +72,7 @@ void test_must_delete_root_data(){
 	ASSERT(FAILURE == searchInBST(tree,&data));
 }
 
-void test_shod_not_delete_data_that_not_exist(){
+void test_must_not_delete_data_that_not_exist(){
 	int data = 5,elementToDelete = 10;
 	insertInBST(tree,&data);
 	ASSERT(FAILURE == deleteFromBST(tree,&elementToDelete));
@@ -96,5 +96,24 @@ void test_deletion_of_right_leaf_node(){
 	insertInBST(tree,&data[2]);
 	ASSERT(SUCCESS == deleteFromBST(tree,&data[2]));
 	ASSERT(FAILURE == searchInBST(tree,&data[2]));
-	ASSERT(SUCCESS == searchInBST(tree,&data[1]));
+}
+
+void test_deletion_of_right_middle_node(){
+	int data[] = {30,20,10};
+	
+	insertInBST(tree,&data[0]);
+	insertInBST(tree,&data[1]);
+	insertInBST(tree,&data[2]);
+	ASSERT(SUCCESS == deleteFromBST(tree,&data[1]));
+	ASSERT(FAILURE == searchInBST(tree,&data[1]));
+}
+
+void test_deletion_of_left_middle_node(){
+	int data[] = {10,20,30};
+	
+	insertInBST(tree,&data[0]);
+	insertInBST(tree,&data[1]);
+	insertInBST(tree,&data[2]);
+	ASSERT(SUCCESS == deleteFromBST(tree,&data[1]));
+	ASSERT(FAILURE == searchInBST(tree,&data[1]));
 }
