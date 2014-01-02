@@ -84,6 +84,11 @@ int main(){
 		test_must_delete_root_data();
 	tearDown();
 	testEnded();
+	testStarted("test_shod_not_delete_data_that_not_exist");
+	setup();
+		test_shod_not_delete_data_that_not_exist();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();

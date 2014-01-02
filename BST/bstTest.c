@@ -71,14 +71,8 @@ void test_must_delete_root_data(){
 	ASSERT(SUCCESS == deleteFromBST(tree,&data));
 	ASSERT(FAILURE == searchInBST(tree,&data));
 }
-
-// void test_must_delete_root_data(){
-// 	int data[] = {30,20,10};
-	
-// 	insertInBST(tree,&data[0]);
-// 	insertInBST(tree,&data[1]);
-// 	insertInBST(tree,&data[2]);
-// 	ASSERT(SUCCESS == searchInBST(tree,&data[0]));
-// 	ASSERT(SUCCESS == searchInBST(tree,&data[1]));
-// 	ASSERT(SUCCESS == searchInBST(tree,&data[2]));
-// }
+void test_shod_not_delete_data_that_not_exist(){
+	int data = 5,elementToDelete = 10;
+	insertInBST(tree,&data);
+	ASSERT(FAILURE == deleteFromBST(tree,&elementToDelete));
+}
