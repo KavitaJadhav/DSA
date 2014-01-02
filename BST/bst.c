@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 Node* traverse(Node *node,void *data,Compare compare){
-        if(compare(data,node->data) == 0)
+                                                                                                                         if(compare(data,node->data) == 0)
                 return NULL;
         if(NULL == node->left && NULL == node->right)
                 return node;
@@ -48,3 +48,9 @@ int searchInBST(BST *tree, void *data){
         return 1;
         return 0;
 }
+int deleteFromBST(BST* tree, void *value){
+        Node* node = tree->root;
+        if (node->left == NULL && node->right == NULL)
+                tree->root = NULL;
+        return 1;
+};

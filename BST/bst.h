@@ -14,5 +14,6 @@ typedef struct Node{
 BST* createBST(Compare compare);
 int insertInBST(BST* tree , void *value);
 int searchInBST(BST* tree, void *value);
+int deleteFromBST(BST* tree, void *value);
 void dispose();
 

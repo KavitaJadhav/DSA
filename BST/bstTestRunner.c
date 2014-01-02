@@ -49,9 +49,9 @@ int main(){
 	fixtureSetup();
 	resetTestCount();
 
-	testStarted("test_must_insert_integer_in_binary_tree");
+	testStarted("test_must_insert_root_data");
 	setup();
-		test_must_insert_integer_in_binary_tree();
+		test_must_insert_root_data();
 	tearDown();
 	testEnded();
 	testStarted("test_must_insert_large_data_on_right_side_of_root");
@@ -77,6 +77,11 @@ int main(){
 	testStarted("test_must_insert_data_at_second_level_on_left_side");
 	setup();
 		test_must_insert_data_at_second_level_on_left_side();
+	tearDown();
+	testEnded();
+	testStarted("test_must_delete_root_data");
+	setup();
+		test_must_delete_root_data();
 	tearDown();
 	testEnded();
 

@@ -14,7 +14,7 @@ void setup(){
 	tree = createBST(compare);
 }
 
-void test_must_insert_integer_in_binary_tree(){
+void test_must_insert_root_data(){
 	int data = 5;
 	ASSERT(SUCCESS == insertInBST(tree,&data));
 	ASSERT(SUCCESS == searchInBST(tree,&data));
@@ -64,3 +64,21 @@ void test_must_insert_data_at_second_level_on_left_side(){
 	ASSERT(SUCCESS == searchInBST(tree,&data[1]));
 	ASSERT(SUCCESS == searchInBST(tree,&data[2]));
 }
+
+void test_must_delete_root_data(){
+	int data = 5;
+	insertInBST(tree,&data);
+	ASSERT(SUCCESS == deleteFromBST(tree,&data));
+	ASSERT(FAILURE == searchInBST(tree,&data));
+}
+
+// void test_must_delete_root_data(){
+// 	int data[] = {30,20,10};
+	
+// 	insertInBST(tree,&data[0]);
+// 	insertInBST(tree,&data[1]);
+// 	insertInBST(tree,&data[2]);
+// 	ASSERT(SUCCESS == searchInBST(tree,&data[0]));
+// 	ASSERT(SUCCESS == searchInBST(tree,&data[1]));
+// 	ASSERT(SUCCESS == searchInBST(tree,&data[2]));
+// }
