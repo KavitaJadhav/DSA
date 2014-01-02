@@ -3,10 +3,8 @@
 #include <stdio.h>
 
 Node* traverse(Node *node,void *data,Compare compare){
-    if(compare(data,node->data) == 0)
-        return NULL;
-    if(NULL == node->left && NULL == node->right)
-        return node;
+    if(compare(data,node->data) == 0) return NULL;
+    if(NULL == node->left && NULL == node->right) return node;
     if(compare(data,node->data) < 0)
         return traverse(node->left, data, compare);
     else return traverse(node->right, data, compare);
@@ -42,24 +40,36 @@ int insertInBST(BST *tree, void *data){
 }
 
 int searchInBST(BST *tree, void *data){
-    Node *parentNode,*rootNode;
-    rootNode = tree->root;
+    Node *parentNode,*rootNode = tree->root;
     if(NULL == rootNode) return 0;
-    if(NULL == traverse(rootNode, data, tree->compare))
-    return 1;
+    if(NULL == traverse(rootNode, data, tree->compare)) return 1;
     return 0;
 }
 
-Node* getParentNode(Node *node,void *data,Compare compare){
+int delete(Node *node,void *data,Compare compare){
     if(node->right){
-        if(compare(node->right->data,data) == 0) return node;
+        if(compare(node->right->data,data) == 0) {
+            if(node->right->left== NULL)
+                node->right = node->right->right;
+            else if(node->right->left == NULL)
+                node->right = node->right->left;
+            else node->right = NULL;
+            return 1;
+        }
     }
     if(node->left){
-        if(compare(node->left->data,data) == 0) return node;
+        if(compare(node->left->data,data) == 0) {
+            if(node->left->right == NULL)
+                node->left = node->left->left;
+            else if(node->left->left == NULL)
+                node->left = node->left->right;
+            else node->left = NULL;
+            return 1;
+        }
     }
     if(compare(node->data,data) > 0)
-            return getParentNode(node->left, data, compare);
-    else return getParentNode(node->right, data, compare);
+        return delete(node->left, data, compare);
+    return delete(node->right, data, compare);
 }
 
 int deleteFromBST(BST* tree, void *data){
@@ -69,23 +79,5 @@ int deleteFromBST(BST* tree, void *data){
         tree->root = NULL;
         return 1;
     }
-    parentNode = getParentNode(node, data, tree->compare);
-    if(parentNode->left){
-        if(tree->compare((parentNode->left)->data,data) == 0){
-            if(parentNode->left->right == NULL)
-                parentNode->left = parentNode->left->left;
-            else if(parentNode->left->left == NULL)
-                parentNode->left = parentNode->left->right;
-            else parentNode->left = NULL;
-        }
-    }
-    else {
-        if(parentNode->right->left== NULL)
-            parentNode->right = parentNode->right->right;
-        else if(parentNode->right->left == NULL)
-            parentNode->right = parentNode->right->left;
-        else parentNode->right = NULL;
-    }   
-
-    return 1;
+    return delete(node, data, tree->compare);
 };
