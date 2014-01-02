@@ -35,20 +35,6 @@ int searchByKey(HashMap* map , void* key){
     List* list = getBucket(map , bucketNumber);
 	return search(list, key,map->compare);
 }
-
-// void* get(HashMap *map, void *key){
-// 	int bucketNumber = map->hashFunc(key , capacity) ;
-// 	List* list = getBucket(map , bucketNumber);
-// 	HashElement* hashElement;
-// 	Node* node = list->header;
-// 	while(node != NULL){
-// 		hashElement = node->data;
-// 		if (!map->compare(key ,hashElement->key)) return hashElement->value;
-// 		node = node->next;
-// 	};
-// 	return NULL;
-// }
-
 int getIndexInBucket(HashMap* map ,void* key ,List* list){
 	HashElement* hashElement;
 	int index = 0 ;
@@ -99,7 +85,7 @@ Iterator keys(HashMap *map){
 void reallocate(HashMap* map , int newCapacity){
 	int i;
 	map->buckets = realloc(map->buckets , newCapacity*sizeof(List));
-	for(i = capacity ; i < newCapacity ; i++)  map->buckets[i] = createList();
+	for(i = map->noOfBuckets ; i < newCapacity ; i++)  map->buckets[i] = createList();
 	map->noOfBuckets = newCapacity;
 };
 void moveToNewBucket( HashMap* map ,List* bucket){
@@ -134,3 +120,19 @@ void disposeMap(HashMap* map){
 		if(Bucket->header!= NULL)  disposeList(Bucket);
 	}
 };
+
+
+// another method to rehash
+// void rehash(HashMap *map){
+// 	void *key,*value;
+// 	int i ;
+// 	Iterator it = keys(map);
+// 	int newCapacity = capacity * 2;
+// 	reallocate(map ,newCapacity);
+// 	while(it.hasNext(&it)){
+// 		key = it.next(&it);
+// 		value = get(map, key);
+// 		remove(map, key);
+// 		put(map, key, value);
+// 	}
+// }

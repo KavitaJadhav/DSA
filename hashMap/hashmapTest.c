@@ -46,14 +46,14 @@ void test_get_an_element_to_hashmap(){
 	string key="intern" , value ="kavita";
 	HashMap* map = create(hashFun, areStringEqual);
 	ASSERT(put(map, &key , &value));
-	ASSERT(NULL == get(map, &key));
+	ASSERT(&value == get(map, &key));
 	disposeMap(map);
 }
 void test_get_should_give_NULL_if_key_not_found(){
 	string key="intern" , keyToSearch = "15439", value ="kavita";
 	HashMap* map = create(hashFun, areStringEqual);
 	ASSERT(put(map, &key , &value));
-	ASSERT(&value == get(map, &keyToSearch));
+	ASSERT(NULL == get(map, &keyToSearch));
 	disposeMap(map);
 }
 void test_remove_an_element_from_hashmap(){
