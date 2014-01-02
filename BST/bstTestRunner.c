@@ -69,6 +69,16 @@ int main(){
 		test_must_not_search_element_if_not_present();
 	tearDown();
 	testEnded();
+	testStarted("test_must_insert_data_at_second_level_on_right_side");
+	setup();
+		test_must_insert_data_at_second_level_on_right_side();
+	tearDown();
+	testEnded();
+	testStarted("test_must_insert_data_at_second_level_on_left_side");
+	setup();
+		test_must_insert_data_at_second_level_on_left_side();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();

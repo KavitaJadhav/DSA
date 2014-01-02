@@ -1,14 +1,14 @@
 #include "bst.h"
 #include <stdlib.h>
 
-Node* getParent(Node *node,void *data,Compare compare){
+Node* traverse(Node *node,void *data,Compare compare){
         if(compare(data,node->data) == 0)
-        return NULL;
+                return NULL;
         if(NULL == node->left && NULL == node->right)
-        return node;
+                return node;
         if(compare(data,node->data) < 0)
-        return getParent(node->left, data, compare);
-        else return getParent(node->right, data, compare);
+                return traverse(node->left, data, compare);
+        else return traverse(node->right, data, compare);
 }
 
 BST* createBST(Compare compare){
@@ -27,14 +27,14 @@ Node* createBSTNode(void *data){
 int insertInBST(BST *tree, void *data){
         Node *node,*parentNode;
         if(NULL == tree->root){
-        tree->root = createBSTNode(data);
-        return 1;
+                tree->root = createBSTNode(data);
+                return 1;
         }
-        parentNode = getParent(tree->root,data,tree->compare);
+        parentNode = traverse(tree->root,data,tree->compare);
         if(parentNode){
-        if(tree->compare(data,parentNode->data) > 0)
-        parentNode->right = createBSTNode(data);
-        else parentNode->left = createBSTNode(data);
+                if(tree->compare(data,parentNode->data) > 0)
+                parentNode->right = createBSTNode(data);
+                else parentNode->left = createBSTNode(data);
         }
         else return 0;
         return 1;
@@ -44,7 +44,7 @@ int searchInBST(BST *tree, void *data){
         Node *parentNode,*rootNode;
         rootNode = tree->root;
         if(NULL == rootNode) return 0;
-        if(NULL == getParent(rootNode, data, tree->compare))
+        if(NULL == traverse(rootNode, data, tree->compare))
         return 1;
         return 0;
 }

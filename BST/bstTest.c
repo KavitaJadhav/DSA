@@ -42,3 +42,25 @@ void test_must_not_search_element_if_not_present(){
 	ASSERT(SUCCESS == insertInBST(tree,&data));
 	ASSERT(FAILURE == searchInBST(tree,&searchElement));
 }
+
+void test_must_insert_data_at_second_level_on_right_side(){
+	int data[] = {10,20,30};
+	
+	insertInBST(tree,&data[0]);
+	insertInBST(tree,&data[1]);
+	insertInBST(tree,&data[2]);
+	ASSERT(SUCCESS == searchInBST(tree,&data[0]));
+	ASSERT(SUCCESS == searchInBST(tree,&data[1]));
+	ASSERT(SUCCESS == searchInBST(tree,&data[2]));
+}
+
+void test_must_insert_data_at_second_level_on_left_side(){
+	int data[] = {30,20,10};
+	
+	insertInBST(tree,&data[0]);
+	insertInBST(tree,&data[1]);
+	insertInBST(tree,&data[2]);
+	ASSERT(SUCCESS == searchInBST(tree,&data[0]));
+	ASSERT(SUCCESS == searchInBST(tree,&data[1]));
+	ASSERT(SUCCESS == searchInBST(tree,&data[2]));
+}
