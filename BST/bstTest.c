@@ -96,4 +96,5 @@ void test_deletion_of_right_leaf_node(){
 	insertInBST(tree,&data[2]);
 	ASSERT(SUCCESS == deleteFromBST(tree,&data[2]));
 	ASSERT(FAILURE == searchInBST(tree,&data[2]));
+	ASSERT(SUCCESS == searchInBST(tree,&data[1]));
 }
