@@ -89,6 +89,16 @@ int main(){
 		test_shod_not_delete_data_that_not_exist();
 	tearDown();
 	testEnded();
+	testStarted("test_deletion_of_left_leaf_node");
+	setup();
+		test_deletion_of_left_leaf_node();
+	tearDown();
+	testEnded();
+	testStarted("test_deletion_of_right_leaf_node");
+	setup();
+		test_deletion_of_right_leaf_node();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
