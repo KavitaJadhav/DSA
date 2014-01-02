@@ -64,13 +64,16 @@ int main(){
 		test_must_insert_small_data_on_left_side_of_root();
 	tearDown();
 	testEnded();
+	testStarted("test_must_not_search_element_if_not_present");
+	setup();
+		test_must_not_search_element_if_not_present();
+	tearDown();
+	testEnded();
 
 	summarizeTestCount();
 	fixtureTearDown();
 	return 0;
 }
-
-void setup(){}
 
 void tearDown(){}
 
